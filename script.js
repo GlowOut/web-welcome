@@ -146,6 +146,186 @@ class BackToTopButton {
 }
 
 // ===================================
+// Pricing Tabs (mobile helpers)
+// ===================================
+
+class PricingTabs {
+    constructor() {
+        this.container = document.querySelector('.pricing-comparison');
+        this.tabs = document.querySelectorAll('.pricing-tab');
+        this.header = document.querySelector('.comparison-header');
+        this.planColumns = document.querySelectorAll('.comparison-header .plan-column');
+        this.active = 'free';
+        this.init();
+    }
+
+    init() {
+        if (!this.container || !this.tabs.length) return;
+
+        this.tabs.forEach(tab => {
+            tab.addEventListener('click', () => this.scrollToPlan(tab.dataset.target));
+        });
+
+        // Observe scrolling to update active tab
+        this.container.addEventListener('scroll', () => this.updateActiveTab());
+        window.addEventListener('resize', debounce(() => this.updateActiveTab(), 150));
+
+        this.updateActiveTab();
+    }
+
+    scrollToPlan(planKey) {
+        const target = this.header.querySelector(`.plan-column[data-plan="${planKey}"]`);
+        if (!target) return;
+        // Scroll to position the plan column right after the sticky feature column (150px)
+        const left = target.offsetLeft - 150;
+        this.container.scrollTo({ left, behavior: 'smooth' });
+    }
+
+    updateActiveTab() {
+        const scrollLeft = this.container.scrollLeft;
+        let nearest = { key: this.active, dist: Infinity };
+        this.planColumns.forEach(col => {
+            const key = col.getAttribute('data-plan');
+            const dist = Math.abs(col.offsetLeft - scrollLeft);
+            if (dist < nearest.dist) {
+                nearest = { key, dist };
+            }
+        });
+        if (nearest.key !== this.active) {
+            this.active = nearest.key;
+            this.tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === this.active));
+        }
+    }
+}
+
+// ===================================
+// Sticky Pricing Header (mobile)
+// ===================================
+
+class StickyPricingHeader {
+    constructor() {
+        this.wrapper = document.getElementById('pricingSticky');
+        this.section = document.querySelector('.pricing');
+        this.scroller = document.querySelector('.pricing-comparison');
+        this.tabs = document.getElementById('pricingTabs');
+        this.header = document.querySelector('.comparison-header');
+        this.clone = null;
+        this.summaryEl = null;
+        this.init();
+    }
+
+    init() {
+        if (!this.wrapper || !this.section || !this.scroller || !this.header) return;
+        this.build();
+        window.addEventListener('scroll', () => this.updateVisibility());
+        this.scroller.addEventListener('scroll', () => this.syncScroll());
+        window.addEventListener('resize', debounce(() => this.syncScroll(), 100));
+        this.updateVisibility();
+        this.syncScroll();
+    }
+
+    build() {
+        // Create sticky container content (tabs + compact plan summary)
+        const container = document.createElement('div');
+        container.className = 'pricing-sticky-inner';
+
+        // Clone tabs if present
+        if (this.tabs) {
+            const tabsClone = this.tabs.cloneNode(true);
+            tabsClone.id = 'pricingTabsSticky';
+            container.appendChild(tabsClone);
+        }
+
+        // Compact summary of the active plan
+        const summary = document.createElement('div');
+        summary.className = 'sticky-plan-summary';
+        summary.innerHTML = `
+            <div class="summary-left">Current plan</div>
+            <div class="summary-right">
+              <div class="summary-title">&nbsp;</div>
+              <div class="summary-price"><span class="currency"></span><span class="amount"></span> <span class="period"></span></div>
+              <a class="btn btn-outline summary-cta" href="#" target="_blank" rel="noopener">Get Started</a>
+            </div>
+        `;
+        container.appendChild(summary);
+
+        this.wrapper.appendChild(container);
+        this.clone = container;
+        this.summaryEl = summary;
+
+        // Wire tab clicks in clone to real scroll behavior
+        const allTabs = this.clone.querySelectorAll('.pricing-tab');
+        allTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const key = tab.dataset.target;
+                const realTab = document.querySelector(`.pricing-tab[data-target="${key}"]`);
+                if (realTab) realTab.click();
+                this.updateActiveSummary();
+            });
+        });
+    }
+
+    updateVisibility() {
+        const rect = this.section.getBoundingClientRect();
+        const navbarHeight = 80; // matches CSS
+        const tabsHeight = 56;   // approx tabs height
+        const topThreshold = navbarHeight;
+        const bottomThreshold = 100; // leave before footer
+        const shouldShow = rect.top <= topThreshold && rect.bottom > bottomThreshold;
+        this.wrapper.style.display = shouldShow ? 'block' : 'none';
+        if (shouldShow) {
+            this.wrapper.style.position = 'fixed';
+            this.wrapper.style.top = navbarHeight + 'px';
+            this.wrapper.style.left = '0';
+            this.wrapper.style.right = '0';
+            this.wrapper.style.zIndex = '6';
+            this.wrapper.style.background = 'var(--color-bg-secondary)';
+            this.wrapper.style.boxShadow = '0 1px 0 var(--color-border)';
+        }
+    }
+
+    syncScroll() {
+        this.updateActiveSummary();
+    }
+
+    getActivePlanKey() {
+        const featureColumnWidth = 150; // keep in sync with CSS
+        const scrollLeft = this.scroller.scrollLeft;
+        const columns = this.header.querySelectorAll('.plan-column');
+        let nearest = { key: 'free', dist: Infinity };
+        columns.forEach(col => {
+            const key = col.getAttribute('data-plan');
+            const left = col.offsetLeft - featureColumnWidth;
+            const dist = Math.abs(left - scrollLeft);
+            if (dist < nearest.dist) nearest = { key, dist };
+        });
+        return nearest.key;
+    }
+
+    updateActiveSummary() {
+        if (!this.summaryEl) return;
+        const key = this.getActivePlanKey();
+        const col = this.header.querySelector(`.plan-column[data-plan="${key}"]`);
+        if (!col) return;
+        const title = col.querySelector('.plan-header h3')?.textContent?.trim() || '';
+        const currency = col.querySelector('.plan-header .currency')?.textContent?.trim() || '';
+        const amount = col.querySelector('.plan-header .amount')?.textContent?.trim() || '';
+        const period = col.querySelector('.plan-header .period')?.textContent?.trim() || '';
+        const cta = col.querySelector('.plan-header a');
+        const ctaHref = cta?.getAttribute('href') || '#';
+        const ctaText = cta?.textContent?.trim() || 'Get Started';
+
+        this.summaryEl.querySelector('.summary-title').textContent = title;
+        this.summaryEl.querySelector('.currency').textContent = currency + ' ';
+        this.summaryEl.querySelector('.amount').textContent = amount;
+        this.summaryEl.querySelector('.period').textContent = period;
+        const summaryCta = this.summaryEl.querySelector('.summary-cta');
+        summaryCta.setAttribute('href', ctaHref);
+        summaryCta.textContent = ctaText;
+    }
+}
+
+// ===================================
 // Scroll Animations
 // ===================================
 
@@ -422,6 +602,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize active link highlighting
     new ActiveLinkHighlighter();
+
+    // Initialize pricing tabs for mobile
+    new PricingTabs();
+
+    // Initialize sticky pricing header for mobile
+    new StickyPricingHeader();
     
     // Initialize smooth scroll polyfill
     smoothScrollPolyfill();

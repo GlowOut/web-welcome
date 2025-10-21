@@ -425,13 +425,20 @@
           </p>
         </div>
 
+        <div class="pricing-sticky" id="pricingSticky" aria-hidden="false"></div>
         <div class="pricing-comparison">
+          <div class="table-scroll-hint" aria-hidden="true">Swipe to compare plans →</div>
+          <div class="pricing-tabs" id="pricingTabs" role="tablist" aria-label="Compare plans">
+            <button class="pricing-tab active" role="tab" aria-selected="true" data-target="free">Free</button>
+            <button class="pricing-tab" role="tab" aria-selected="false" data-target="single">Single</button>
+            <button class="pricing-tab" role="tab" aria-selected="false" data-target="salon">Salon</button>
+          </div>
           <!-- Pricing Headers -->
           <div class="comparison-header">
             <div class="feature-column">
               <h3>Features</h3>
             </div>
-            <div class="plan-column">
+            <div class="plan-column" data-plan="free">
               <div class="plan-header">
                 <h3>Free</h3>
                 <div class="price">
@@ -449,7 +456,7 @@
                 </a>
               </div>
             </div>
-            <div class="plan-column featured">
+            <div class="plan-column featured" data-plan="single">
               <div class="plan-header">
                 <h3>Single</h3>
                 <div class="price">
@@ -467,7 +474,7 @@
                 </a>
               </div>
             </div>
-            <div class="plan-column">
+            <div class="plan-column" data-plan="salon">
               <div class="plan-header">
                 <h3>Salon</h3>
                 <div class="price">
