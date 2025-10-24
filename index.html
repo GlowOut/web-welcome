@@ -23,9 +23,79 @@
       content="Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business."
     />
 
-    <title>GlowOut Partners - Welcome</title>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://welcome.glowout.me/" />
 
+    <!-- Sitemap -->
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap.xml"
+    />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://welcome.glowout.me/" />
+    <meta property="og:title" content="GlowOut Partners - Welcome" />
+    <meta
+      property="og:description"
+      content="Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business."
+    />
+    <meta
+      property="og:image"
+      content="https://welcome.glowout.me/Images/bg_img.webp"
+    />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://welcome.glowout.me/" />
+    <meta name="twitter:title" content="GlowOut Partners - Welcome" />
+    <meta
+      name="twitter:description"
+      content="Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business."
+    />
+    <meta
+      name="twitter:image"
+      content="https://welcome.glowout.me/Images/bg_img.webp"
+    />
+
+    <!-- Robots Meta Tag -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="GlowOut" />
+    <meta
+      name="keywords"
+      content="beauty service provider, salon management, booking calendar, beauty business, freelance beautician, salon owners, beauty appointments, stripe payments, beauty services, GlowOut partners"
+    />
+    <meta name="theme-color" content="#FF6B9D" />
+
+    <!-- Geo Tags for UK Targeting -->
+    <meta name="geo.region" content="GB" />
+    <meta name="geo.placename" content="United Kingdom" />
+
+    <title>
+      GlowOut Partners - Beauty Service Provider Platform | Join Today
+    </title>
+
+    <!-- Favicon and Apple Touch Icons -->
     <link rel="shortcut icon" href="Images/favicon.webp" />
+    <link rel="icon" type="image/webp" href="Images/favicon.webp" sizes="any" />
+    <link rel="apple-touch-icon" href="Images/favicon.webp" />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./styles.css" as="style" />
+    <link rel="preload" href="./script.js" as="script" />
+
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
     <!-- Font Awesome -->
     <link
@@ -43,6 +113,90 @@
     />
 
     <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "GlowOut Partners",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free Plan",
+            "price": "0",
+            "priceCurrency": "GBP"
+          },
+          {
+            "@type": "Offer",
+            "name": "Single Plan",
+            "price": "14.99",
+            "priceCurrency": "GBP"
+          },
+          {
+            "@type": "Offer",
+            "name": "Salon Plan",
+            "price": "24.99",
+            "priceCurrency": "GBP"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "150"
+        },
+        "description": "Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business.",
+        "url": "https://welcome.glowout.me/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "GlowOut",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://welcome.glowout.me/Images/bg_img.webp"
+          },
+          "sameAs": [
+            "https://www.facebook.com/GlowOutOfficial",
+            "https://www.instagram.com/glowoutofficial/"
+          ]
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "GlowOut",
+        "url": "https://glowout.me",
+        "logo": "https://welcome.glowout.me/Images/bg_img.webp",
+        "description": "Bringing beauty services into the future",
+        "sameAs": [
+          "https://www.facebook.com/GlowOutOfficial",
+          "https://www.instagram.com/glowoutofficial/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English"]
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "GlowOut Partners",
+        "url": "https://welcome.glowout.me/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://glowout.me/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -425,13 +579,45 @@
           </p>
         </div>
 
-        <div class="pricing-sticky" id="pricingSticky" aria-hidden="false"></div>
+        <div
+          class="pricing-sticky"
+          id="pricingSticky"
+          aria-hidden="false"
+        ></div>
         <div class="pricing-comparison">
-          <div class="table-scroll-hint" aria-hidden="true">Swipe to compare plans →</div>
-          <div class="pricing-tabs" id="pricingTabs" role="tablist" aria-label="Compare plans">
-            <button class="pricing-tab active" role="tab" aria-selected="true" data-target="free">Free</button>
-            <button class="pricing-tab" role="tab" aria-selected="false" data-target="single">Single</button>
-            <button class="pricing-tab" role="tab" aria-selected="false" data-target="salon">Salon</button>
+          <div class="table-scroll-hint" aria-hidden="true">
+            Swipe to compare plans →
+          </div>
+          <div
+            class="pricing-tabs"
+            id="pricingTabs"
+            role="tablist"
+            aria-label="Compare plans"
+          >
+            <button
+              class="pricing-tab active"
+              role="tab"
+              aria-selected="true"
+              data-target="free"
+            >
+              Free
+            </button>
+            <button
+              class="pricing-tab"
+              role="tab"
+              aria-selected="false"
+              data-target="single"
+            >
+              Single
+            </button>
+            <button
+              class="pricing-tab"
+              role="tab"
+              aria-selected="false"
+              data-target="salon"
+            >
+              Salon
+            </button>
           </div>
           <!-- Pricing Headers -->
           <div class="comparison-header">

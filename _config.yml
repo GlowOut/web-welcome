@@ -1,0 +1,19 @@
+# GlowOut Partners - GitHub Pages Configuration
+# This file is optional but can be used if you want Jekyll features
+
+# Exclude files from being processed
+exclude:
+  - README.md
+  - node_modules/
+  - .git/
+  - .gitignore
+
+# Site settings (optional - only if you want Jekyll variables)
+title: GlowOut Partners
+description: Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business.
+url: https://welcome.glowout.me
+baseurl: ""
+
+# Disable Jekyll processing for pure HTML sites (recommended for your case)
+# This makes the site build faster
+plugins: []

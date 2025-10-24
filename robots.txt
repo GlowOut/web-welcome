@@ -1,0 +1,11 @@
+# Robots.txt for GlowOut Partners
+User-agent: *
+Allow: /
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://welcome.glowout.me/sitemap.xml
+
+# Crawl-delay (optional, prevents overwhelming server)
+Crawl-delay: 1
+

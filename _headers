@@ -1,0 +1,21 @@
+# Headers for GitHub Pages (if using Cloudflare Pages or similar)
+# Note: GitHub Pages doesn't support custom headers natively
+# This file is for reference if you migrate to Cloudflare Pages or Netlify
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  
+# Cache static assets
+/Images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=2592000
+
+/*.js
+  Cache-Control: public, max-age=2592000
+
