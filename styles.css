@@ -1653,3 +1653,56 @@ section {
 .comparison-row.fee-footnote-row { grid-template-columns: 1fr; }
 .comparison-row.fee-footnote-row .plan-cell { display: none; }
 .fee-footnote { font-size: 0.8rem; color: var(--color-text-tertiary); }
+
+/* Mobile overrides for full-width fee rows */
+@media (max-width: 768px) {
+  .comparison-row.fee-description-row,
+  .comparison-row.fee-footnote-row {
+    grid-template-columns: 1fr !important;
+    min-width: 100% !important;
+  }
+  .comparison-row.fee-description-row .feature-cell,
+  .comparison-row.fee-footnote-row .feature-cell {
+    position: static !important;
+    left: auto !important;
+    z-index: 1;
+    background-color: var(--color-bg-primary);
+    box-shadow: none;
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+  .comparison-row.fee-description-row .plan-cell,
+  .comparison-row.fee-footnote-row .plan-cell {
+    display: none !important;
+  }
+}
+
+/* Mobile fees summary card */
+.fees-mobile { display: none; }
+@media (max-width: 768px) {
+  /* Hide in-table fee rows on mobile */
+  .comparison-row.fee-description-row,
+  .comparison-row.fee-footnote-row { display: none !important; }
+
+  .fees-mobile { display: block; }
+  .fees-mobile-card {
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+  }
+  .fees-mobile-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+  }
+  .fees-mobile-header i { color: var(--glowout-color-1); }
+  .fees-mobile-list { margin: var(--spacing-sm) 0 var(--spacing-md); padding-left: var(--spacing-lg); }
+  .fees-mobile-list li { color: var(--color-text-primary); margin: 0.25rem 0; }
+  .fees-mobile-desc { color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--spacing-xs); }
+  .fees-mobile-footnote { color: var(--color-text-tertiary); font-size: 0.85rem; }
+}
