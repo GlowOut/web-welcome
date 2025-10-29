@@ -1567,3 +1567,89 @@ section {
     padding-left: var(--spacing-xl);
   }
 }
+
+/* ===================================
+   Payment Fees Link and Badge
+   =================================== */
+
+.fees-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: var(--spacing-xs);
+  background-color: var(--glowout-color-1);
+  color: white;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  vertical-align: middle;
+}
+
+.fees-link:hover {
+  background-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.fee-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.comparison-row:hover .fee-badge {
+  border-color: var(--glowout-color-1);
+  background-color: rgba(178, 163, 240, 0.1);
+}
+
+/* Fee Description Row */
+.comparison-row.fee-description-row {
+  background-color: rgba(178, 163, 240, 0.05);
+  border-top: 1px solid rgba(178, 163, 240, 0.2);
+  border-bottom: 1px solid rgba(178, 163, 240, 0.2);
+}
+
+.comparison-row.fee-description-row:hover {
+  background-color: rgba(178, 163, 240, 0.1);
+}
+
+.fee-description {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.fee-description i {
+  color: var(--glowout-color-1);
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+/* Make fee description row span full comparison width */
+.comparison-row.fee-description-row {
+  grid-template-columns: 1fr;
+}
+.comparison-row.fee-description-row .plan-cell {
+  display: none;
+}
+/* Improve spacing when full-width */
+.comparison-row.fee-description-row .feature-cell {
+  padding: var(--spacing-md) var(--spacing-xl);
+}
+
+/* Fee footnote row */
+.comparison-row.fee-footnote-row { grid-template-columns: 1fr; }
+.comparison-row.fee-footnote-row .plan-cell { display: none; }
+.fee-footnote { font-size: 0.8rem; color: var(--color-text-tertiary); }
