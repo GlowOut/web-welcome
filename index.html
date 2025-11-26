@@ -20,15 +20,36 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta
       name="description"
-      content="Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business."
+      content="Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals."
     />
 
-    <!-- Canonical URL -->
+    <!-- Canonical URL - Explicitly set to HTTPS only version -->
     <link rel="canonical" href="https://welcome.glowout.me/" />
+    
     <!-- Language alternates for canonical -->
     <link rel="alternate" href="https://welcome.glowout.me/" hreflang="en-gb" />
     <link rel="alternate" href="https://welcome.glowout.me/" hreflang="en" />
     <link rel="alternate" href="https://welcome.glowout.me/" hreflang="x-default" />
+    
+    <!-- Force HTTPS and non-WWW redirect -->
+    <script>
+      (function() {
+        var host = window.location.hostname;
+        var protocol = window.location.protocol;
+        
+        // Redirect to HTTPS if on HTTP
+        if (protocol === 'http:') {
+          window.location.href = 'https://welcome.glowout.me' + window.location.pathname + window.location.search;
+          return;
+        }
+        
+        // Redirect www to non-www
+        if (host === 'www.welcome.glowout.me') {
+          window.location.href = 'https://welcome.glowout.me' + window.location.pathname + window.location.search;
+          return;
+        }
+      })();
+    </script>
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website" />
@@ -37,7 +58,7 @@
     <meta property="og:title" content="GlowOut Partners - Welcome" />
     <meta
       property="og:description"
-      content="Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business."
+      content="Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals."
     />
     <meta
       property="og:image"
@@ -50,7 +71,7 @@
     <meta name="twitter:title" content="GlowOut Partners - Welcome" />
     <meta
       name="twitter:description"
-      content="Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business."
+      content="Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals."
     />
     <meta
       name="twitter:image"
@@ -145,7 +166,7 @@
           "ratingValue": "4.8",
           "ratingCount": "150"
         },
-        "description": "Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business.",
+        "description": "Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals.",
         "url": "https://welcome.glowout.me/",
         "publisher": {
           "@type": "Organization",
