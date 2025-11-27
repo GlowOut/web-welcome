@@ -25,27 +25,37 @@
 
     <!-- Canonical URL - Explicitly set to HTTPS only version -->
     <link rel="canonical" href="https://welcome.glowout.me/" />
-    
+
     <!-- Language alternates for canonical -->
     <link rel="alternate" href="https://welcome.glowout.me/" hreflang="en-gb" />
     <link rel="alternate" href="https://welcome.glowout.me/" hreflang="en" />
-    <link rel="alternate" href="https://welcome.glowout.me/" hreflang="x-default" />
-    
+    <link
+      rel="alternate"
+      href="https://welcome.glowout.me/"
+      hreflang="x-default"
+    />
+
     <!-- Force HTTPS and non-WWW redirect -->
     <script>
-      (function() {
+      (function () {
         var host = window.location.hostname;
         var protocol = window.location.protocol;
-        
+
         // Redirect to HTTPS if on HTTP
-        if (protocol === 'http:') {
-          window.location.href = 'https://welcome.glowout.me' + window.location.pathname + window.location.search;
+        if (protocol === "http:") {
+          window.location.href =
+            "https://welcome.glowout.me" +
+            window.location.pathname +
+            window.location.search;
           return;
         }
-        
+
         // Redirect www to non-www
-        if (host === 'www.welcome.glowout.me') {
-          window.location.href = 'https://welcome.glowout.me' + window.location.pathname + window.location.search;
+        if (host === "www.welcome.glowout.me") {
+          window.location.href =
+            "https://welcome.glowout.me" +
+            window.location.pathname +
+            window.location.search;
           return;
         }
       })();
@@ -242,7 +252,9 @@
           <a href="#customers" class="nav-link">Customers</a>
           <a href="#features" class="nav-link">Features</a>
           <a href="#pricing" class="nav-link">Pricing</a>
-          <a href="https://glowout.me/partners/" class="nav-link nav-login">Partner Login</a>
+          <a href="https://glowout.me/partners/" class="nav-link nav-login"
+            >Partner Login</a
+          >
 
           <div class="nav-social">
             <a
@@ -295,7 +307,7 @@
 
           <div class="hero-cta">
             <a
-              href="https://apps.apple.com/us/app/glowout-partners/id6738353449"
+              href="https://apps.apple.com/gb/app/glowout-partners/id6738353449"
               class="store-badge"
               target="_blank"
               rel="noopener"
@@ -821,7 +833,11 @@
             <div class="comparison-row">
               <div class="feature-cell">
                 Take Card Payments
-                <a href="#payment-fees" class="fees-link" title="View payment processing fees">
+                <a
+                  href="#payment-fees"
+                  class="fees-link"
+                  title="View payment processing fees"
+                >
                   <i class="fas fa-info-circle"></i>
                 </a>
               </div>
@@ -869,22 +885,33 @@
             <div class="comparison-row">
               <div class="feature-cell">Card Payment Processing Fee</div>
               <div class="plan-cell"><span class="fee-badge">N/A</span></div>
-              <div class="plan-cell featured"><span class="fee-badge">1.5% + 20p</span></div>
-              <div class="plan-cell"><span class="fee-badge">1.5% + 20p</span></div>
+              <div class="plan-cell featured">
+                <span class="fee-badge">1.5% + 20p</span>
+              </div>
+              <div class="plan-cell">
+                <span class="fee-badge">1.5% + 20p</span>
+              </div>
             </div>
 
             <div class="comparison-row">
               <div class="feature-cell">Klarna Processing Fee</div>
               <div class="plan-cell"><span class="fee-badge">N/A</span></div>
-              <div class="plan-cell featured"><span class="fee-badge">4.99% + 35p</span></div>
-              <div class="plan-cell"><span class="fee-badge">4.99% + 35p</span></div>
+              <div class="plan-cell featured">
+                <span class="fee-badge">4.99% + 35p</span>
+              </div>
+              <div class="plan-cell">
+                <span class="fee-badge">4.99% + 35p</span>
+              </div>
             </div>
 
             <div class="comparison-row fee-description-row">
               <div class="feature-cell">
                 <span class="fee-description">
                   <i class="fas fa-info-circle"></i>
-                  We partner with Stripe for secure card payments, and they charge a processing fee on each card payment. For example, on a £50 service the fee is ~£0.95 (1.5% + 20p), so you receive ~£49.05. No extra fees from GlowOut.
+                  We partner with Stripe for secure card payments, and they
+                  charge a processing fee on each card payment. For example, on
+                  a £50 service the fee is ~£0.95 (1.5% + 20p), so you receive
+                  ~£49.05. No extra fees from GlowOut.
                 </span>
               </div>
               <div class="plan-cell"></div>
@@ -894,14 +921,15 @@
 
             <div class="comparison-row fee-footnote-row">
               <div class="feature-cell">
-                <span class="fee-footnote">Fees may vary by card type and region. Exact charges are set by Stripe.</span>
+                <span class="fee-footnote"
+                  >Fees may vary by card type and region. Exact charges are set
+                  by Stripe.</span
+                >
               </div>
               <div class="plan-cell"></div>
               <div class="plan-cell featured"></div>
               <div class="plan-cell"></div>
             </div>
-
-
 
             <!-- Additional Features Section -->
             <div class="comparison-section-header">
@@ -949,13 +977,18 @@
             <li><strong>Klarna (Pay Later)</strong>: 4.99% + 35p</li>
           </ul>
           <p class="fees-mobile-desc">
-            We partner with Stripe for secure card payments, and they charge a processing fee on each card payment. For example, on a £50 service the fee is ~£0.95 (1.5% + 20p), so you receive ~£49.05. No extra fees from GlowOut.
+            We partner with Stripe for secure card payments, and they charge a
+            processing fee on each card payment. For example, on a £50 service
+            the fee is ~£0.95 (1.5% + 20p), so you receive ~£49.05. No extra
+            fees from GlowOut.
           </p>
-          <p class="fees-mobile-footnote">Fees may vary by card type and region. Exact charges are set by Stripe.</p>
+          <p class="fees-mobile-footnote">
+            Fees may vary by card type and region. Exact charges are set by
+            Stripe.
+          </p>
         </div>
       </div>
     </section>
-
 
     <!-- Footer -->
     <footer class="footer">
