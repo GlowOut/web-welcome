@@ -309,16 +309,16 @@ body {
 }
 
 .blob-1 {
-  width: 350px;
-  height: 350px;
+  width: 735px;
+  height: 735px;
   top: -5%;
   left: -2%;
   animation: blobFloat1 3s ease-in-out infinite;
 }
 
 .blob-2 {
-  width: 380px;
-  height: 380px;
+  width: 798px;
+  height: 798px;
   top: -8%;
   right: -5%;
   animation: blobFloat2 3.5s ease-in-out infinite;
@@ -326,8 +326,8 @@ body {
 }
 
 .blob-3 {
-  width: 300px;
-  height: 300px;
+  width: 630px;
+  height: 630px;
   bottom: -5%;
   left: 8%;
   animation: blobFloat3 4s ease-in-out infinite;
@@ -335,8 +335,8 @@ body {
 }
 
 .blob-4 {
-  width: 360px;
-  height: 360px;
+  width: 756px;
+  height: 756px;
   bottom: -8%;
   right: 3%;
   animation: blobFloat4 3.25s ease-in-out infinite;
@@ -344,8 +344,8 @@ body {
 }
 
 .blob-5 {
-  width: 320px;
-  height: 320px;
+  width: 672px;
+  height: 672px;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -354,8 +354,8 @@ body {
 }
 
 .blob-6 {
-  width: 290px;
-  height: 290px;
+  width: 609px;
+  height: 609px;
   top: 60%;
   right: 18%;
   animation: blobFloat6 2.75s ease-in-out infinite;
