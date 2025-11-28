@@ -609,6 +609,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize sticky pricing header for mobile
     new StickyPricingHeader();
     
+    // Initialize ambassador form
+    new AmbassadorFormHandler();
+    
     // Initialize smooth scroll polyfill
     smoothScrollPolyfill();
     
@@ -676,6 +679,220 @@ if ('performance' in window && 'PerformanceObserver' in window) {
 // }
 
 // ===================================
+// Ambassador Form Handler
+// ===================================
+
+class AmbassadorFormHandler {
+    constructor() {
+        this.modal = document.getElementById('ambassadorModal');
+        this.form = document.getElementById('ambassadorForm');
+        this.ctaButton = document.getElementById('ambassadorCta');
+        this.closeButton = document.getElementById('modalClose');
+        this.overlay = document.querySelector('.modal-overlay');
+        this.submitButton = document.getElementById('ambassadorSubmit');
+        this.messageElement = document.getElementById('formMessage');
+        this.apiUrl = 'https://dev.glowout.me/api/api/ambassador/submit';
+        
+        // Rate limiting
+        this.lastSubmitTime = 0;
+        this.minSubmitInterval = 60000; // 1 minute in milliseconds
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.modal || !this.form) return;
+        
+        // Open modal
+        this.ctaButton.addEventListener('click', () => this.openModal());
+        
+        // Close modal
+        this.closeButton.addEventListener('click', () => this.closeModal());
+        this.overlay.addEventListener('click', () => this.closeModal());
+        
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+        
+        // Form submission
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        
+        // Real-time validation
+        const inputs = this.form.querySelectorAll('input[required], textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('input', () => this.clearFieldError(input));
+        });
+    }
+
+    openModal() {
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first input
+        setTimeout(() => {
+            const firstInput = this.form.querySelector('input');
+            if (firstInput) firstInput.focus();
+        }, 300);
+    }
+
+    closeModal() {
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Reset form after animation
+        setTimeout(() => {
+            this.resetForm();
+        }, 300);
+    }
+
+    validateField(field) {
+        const formGroup = field.closest('.form-group');
+        const errorElement = formGroup.querySelector('.form-error');
+        
+        if (field.hasAttribute('required') && !field.value.trim()) {
+            formGroup.classList.add('error');
+            errorElement.textContent = 'This field is required';
+            return false;
+        }
+        
+        if (field.type === 'email' && field.value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                formGroup.classList.add('error');
+                errorElement.textContent = 'Please enter a valid email address';
+                return false;
+            }
+        }
+        
+        formGroup.classList.remove('error');
+        errorElement.textContent = '';
+        return true;
+    }
+
+    clearFieldError(field) {
+        const formGroup = field.closest('.form-group');
+        if (field.value.trim()) {
+            formGroup.classList.remove('error');
+            formGroup.querySelector('.form-error').textContent = '';
+        }
+    }
+
+    validateForm() {
+        const inputs = this.form.querySelectorAll('input[required]');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!this.validateField(input)) {
+                isValid = false;
+            }
+        });
+        
+        return isValid;
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!this.validateForm()) {
+            this.showMessage('Please fix the errors above', 'error');
+            return;
+        }
+        
+        // Client-side rate limiting
+        const now = Date.now();
+        if (now - this.lastSubmitTime < this.minSubmitInterval) {
+            const remainingSeconds = Math.ceil((this.minSubmitInterval - (now - this.lastSubmitTime)) / 1000);
+            this.showMessage(`Please wait ${remainingSeconds} seconds before submitting again`, 'error');
+            return;
+        }
+        
+        // Disable submit button and show loading
+        this.submitButton.disabled = true;
+        this.submitButton.querySelector('.btn-text').style.display = 'none';
+        this.submitButton.querySelector('.btn-loading').style.display = 'inline-flex';
+        this.hideMessage();
+        
+        // Collect form data
+        const formData = {
+            name: this.form.name.value.trim(),
+            email: this.form.email.value.trim(),
+            message: this.form.message.value.trim()
+        };
+        
+        try {
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.lastSubmitTime = Date.now();
+                this.showMessage('Thank you! Your application has been submitted successfully. We\'ll be in touch soon!', 'success');
+                
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    this.closeModal();
+                }, 3000);
+            } else {
+                // Handle specific error messages
+                if (response.status === 429) {
+                    this.showMessage('Too many requests. Please try again in a few minutes.', 'error');
+                } else if (data.message) {
+                    this.showMessage(data.message, 'error');
+                } else {
+                    this.showMessage('Something went wrong. Please try again.', 'error');
+                }
+            }
+        } catch (error) {
+            console.error('Ambassador form submission error:', error);
+            this.showMessage('Network error. Please check your connection and try again.', 'error');
+        } finally {
+            // Re-enable submit button
+            this.submitButton.disabled = false;
+            this.submitButton.querySelector('.btn-text').style.display = 'inline';
+            this.submitButton.querySelector('.btn-loading').style.display = 'none';
+        }
+    }
+
+    showMessage(message, type) {
+        this.messageElement.textContent = message;
+        this.messageElement.className = `form-message ${type}`;
+        this.messageElement.style.display = 'block';
+        
+        // Scroll to message
+        this.messageElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    hideMessage() {
+        this.messageElement.style.display = 'none';
+    }
+
+    resetForm() {
+        this.form.reset();
+        
+        // Clear all errors
+        const formGroups = this.form.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            group.classList.remove('error');
+            group.querySelector('.form-error').textContent = '';
+        });
+        
+        this.hideMessage();
+    }
+}
+
+// ===================================
 // Export for potential module usage
 // ===================================
 
@@ -687,7 +904,8 @@ if (typeof module !== 'undefined' && module.exports) {
         ScrollAnimations,
         ImageLazyLoader,
         FormValidator,
-        AnimatedCounter
+        AnimatedCounter,
+        AmbassadorFormHandler
     };
 }
 
