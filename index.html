@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!--
+    GlowOut Partners - Business Software for Beauty Professionals
+    This site is for salon owners, freelancers, and mobile beauticians.
+    Customer booking site: https://glowout.me
+  -->
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - Combined Analytics & Ads -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-1K97F91FRT"
@@ -12,25 +17,14 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
+      
+      // Google Analytics
       gtag("config", "G-1K97F91FRT");
-    </script>
-
-    <!-- Google tag (gtag.js) - Google Ads -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-17764370287"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      
+      // Google Ads
       gtag("config", "AW-17764370287");
-    </script>
-
-    <!-- Event snippet for Sign-up conversion page -->
-    <script>
+      
+      // Event snippet for Sign-up conversion page
       gtag("event", "conversion", {
         send_to: "AW-17764370287/yHaICOiLj8gbEO-O25ZC",
       });
@@ -115,6 +109,12 @@
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <meta name="googlebot" content="index, follow" />
+    
+    <!-- Differentiation signals for Google -->
+    <meta property="og:site_name" content="GlowOut Partners - For Beauty Professionals" />
+    <meta name="application-name" content="GlowOut Partners App" />
+    <meta property="article:section" content="Business Software" />
+    <meta property="og:locale" content="en_GB" />
 
     <!-- Additional SEO Meta Tags -->
     <meta name="author" content="GlowOut" />
@@ -168,37 +168,74 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
+        "@type": "SoftwareApplication",
         "name": "GlowOut Partners",
         "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Salon & Spa Management Software",
         "operatingSystem": "iOS, Android",
         "offers": [
           {
             "@type": "Offer",
             "name": "Free Plan",
+            "description": "Forever free plan for beauty professionals",
             "price": "0",
-            "priceCurrency": "GBP"
+            "priceCurrency": "GBP",
+            "availability": "https://schema.org/InStock"
           },
           {
             "@type": "Offer",
             "name": "Single Plan",
+            "description": "Perfect for freelancers and solo practitioners",
             "price": "14.99",
-            "priceCurrency": "GBP"
+            "priceCurrency": "GBP",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "14.99",
+              "priceCurrency": "GBP",
+              "unitText": "MONTH"
+            },
+            "availability": "https://schema.org/InStock"
           },
           {
             "@type": "Offer",
             "name": "Salon Plan",
+            "description": "For salons with multiple staff members",
             "price": "24.99",
-            "priceCurrency": "GBP"
+            "priceCurrency": "GBP",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "24.99",
+              "priceCurrency": "GBP",
+              "unitText": "MONTH"
+            },
+            "availability": "https://schema.org/InStock"
           }
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.8",
-          "ratingCount": "150"
+          "ratingCount": "150",
+          "bestRating": "5",
+          "worstRating": "1"
         },
         "description": "Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals.",
         "url": "https://welcome.glowout.me/",
+        "screenshot": "https://welcome.glowout.me/Images/hero imageHD.webp",
+        "featureList": [
+          "Appointment booking and calendar management",
+          "Client management and booking history",
+          "Stripe payment integration",
+          "Deposit collection and no-show protection",
+          "Employee management for salons",
+          "Revenue and client reports",
+          "Consultation form builder",
+          "Gallery showcase",
+          "Review management"
+        ],
+        "downloadUrl": [
+          "https://apps.apple.com/gb/app/glowout-partners/id6738353449",
+          "https://play.google.com/store/apps/details?id=com.glowout.owner"
+        ],
         "publisher": {
           "@type": "Organization",
           "name": "GlowOut",
@@ -210,6 +247,10 @@
             "https://www.facebook.com/GlowOutOfficial",
             "https://www.instagram.com/glowoutofficial/"
           ]
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Beauty service providers, salon owners, freelance beauticians, mobile beauty professionals"
         }
       }
     </script>
@@ -234,17 +275,91 @@
       }
     </script>
 
+    <!-- FAQ Schema for Rich Snippets -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does GlowOut Partners cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GlowOut offers three plans: Free (£0 forever), Single (£14.99/month for freelancers), and Salon (£24.99/month for salons with employees). The Free plan includes calendar, reports, and gallery features. Paid plans add card payments, deposits, consultation forms, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What payment processing fees does GlowOut charge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GlowOut doesn't charge any fees. Card payments are processed by Stripe at 1.5% + 20p per transaction. Klarna (Pay Later) is 4.99% + 35p. For example, on a £50 service, the card payment fee is ~£0.95, so you receive ~£49.05."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use GlowOut as a freelance beautician?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! The Single plan (£14.99/month) is perfect for freelancers, mobile beauticians, and solo practitioners. You get all features including card payments, deposits, no-show protection, and your own booking website."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does GlowOut work for mobile beauty services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. GlowOut Partners supports both salon-based and mobile beauty services. You can set your service location preferences and manage home visits or salon appointments."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I take deposits with GlowOut?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With Single or Salon plans, you can require deposits before confirming bookings. Choose a fixed amount or percentage of the service cost. This protects against no-shows and last-minute cancellations."
+            }
+          }
+        ]
+      }
+    </script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "GlowOut Partners",
+        "name": "GlowOut Partners - For Beauty Professionals",
+        "alternateName": "GlowOut Partners App",
         "url": "https://welcome.glowout.me/",
+        "description": "Salon booking software and business management platform for beauty professionals in the UK",
+        "inLanguage": "en-GB",
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://glowout.me/search?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://welcome.glowout.me/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "For Beauty Professionals"
+          }
+        ]
       }
     </script>
   </head>
