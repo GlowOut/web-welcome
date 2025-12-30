@@ -11,7 +11,7 @@ exclude:
 # Site settings (optional - only if you want Jekyll variables)
 title: GlowOut Partners
 description: Join GlowOut as a beauty service provider. Manage bookings, take payments, and grow your beauty business.
-url: https://welcome.glowout.me
+url: https://helloglowout.com
 baseurl: ""
 
 # Disable Jekyll processing for pure HTML sites (recommended for your case)
