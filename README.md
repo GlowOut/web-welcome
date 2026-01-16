@@ -44,7 +44,7 @@ web-welcome/
 2. **Designed For** - Target customer segments
 3. **Features** - Comprehensive feature list (12+ features)
 4. **CTA** - Call-to-action for main website
-5. **Pricing** - Two pricing tiers (Free, Single)
+5. **Pricing** - Two pricing tiers (Free, Glow)
 6. **Footer** - Links and social media
 
 ## 🎨 Customization

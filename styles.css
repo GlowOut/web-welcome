@@ -1803,7 +1803,7 @@ section {
   font-size: 1.25rem;
 }
 
-/* Add-on Rows with Single Price */
+/* Add-on Rows with Glow Price */
 .comparison-row.addon-row {
   grid-template-columns: 2fr 1fr;
 }
