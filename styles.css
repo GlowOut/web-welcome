@@ -1453,7 +1453,7 @@ section {
 
 .comparison-header {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 0;
   background-color: var(--color-bg-secondary);
   border-bottom: 2px solid var(--color-border);
@@ -1534,7 +1534,7 @@ section {
 
 .comparison-row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 0;
   border-bottom: 1px solid var(--color-border);
   transition: background-color var(--transition-fast);
@@ -1593,11 +1593,11 @@ section {
 /* Responsive Comparison Table */
 @media (max-width: 1024px) {
   .comparison-header {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
   }
 
   .comparison-row {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
   }
 
   .feature-cell {
@@ -1640,7 +1640,7 @@ section {
   }
 
   .comparison-header {
-    grid-template-columns: 150px repeat(3, 280px);
+    grid-template-columns: 150px repeat(2, 280px);
     gap: 0;
     min-width: fit-content;
     position: sticky;
@@ -1680,7 +1680,7 @@ section {
   }
 
   .comparison-row {
-    grid-template-columns: 150px repeat(3, 280px);
+    grid-template-columns: 150px repeat(2, 280px);
     min-width: fit-content;
   }
 
