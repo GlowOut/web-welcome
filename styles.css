@@ -889,7 +889,6 @@ section {
   align-items: center;
   gap: 8px;
   padding: 14px 26px;
-  background: linear-gradient(white, white) padding-box, var(--gradient-primary) border-box;
   text-decoration: none;
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
@@ -900,11 +899,8 @@ section {
   margin-top: var(--spacing-md);
   border: 2px solid transparent;
   box-shadow: var(--shadow-sm);
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   position: relative;
+  color: inherit;
 }
 
 .testimonial-book-btn::before {
@@ -934,6 +930,15 @@ section {
 .testimonial-book-btn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+}
+
+.testimonial-book-btn span,
+.testimonial-book-btn i {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .testimonial-book-btn i {
