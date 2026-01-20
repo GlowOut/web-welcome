@@ -873,6 +873,7 @@ section {
   gap: 4px;
   color: #fbbf24;
   font-size: 1.1rem;
+  justify-content: center;
 }
 
 .testimonial-text {
