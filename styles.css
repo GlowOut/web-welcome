@@ -1962,6 +1962,11 @@ section {
     -webkit-overflow-scrolling: touch;
   }
 
+  .table-scroll-hint,
+  .pricing-tabs {
+    min-width: calc(150px + (2 * 280px));
+  }
+
   .pricing-tabs {
     display: flex;
     position: sticky;
