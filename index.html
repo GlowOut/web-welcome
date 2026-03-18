@@ -1437,6 +1437,79 @@
       </div>
     </footer>
 
+    <!-- Promo Offer Modal -->
+    <div class="modal promo-modal" id="promoModal" role="dialog" aria-modal="true" aria-labelledby="promoHeadline">
+      <div class="modal-overlay" id="promoOverlay"></div>
+      <div class="modal-content promo-modal-content">
+        <button class="modal-close" id="promoClose" aria-label="Close offer">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="promo-gradient-bar"></div>
+
+        <div class="promo-badge">
+          <i class="fas fa-bolt"></i> Limited Time Offer
+        </div>
+
+        <div class="promo-header">
+          <div class="promo-percent gradient-text">50%</div>
+          <h2 class="promo-headline" id="promoHeadline">Off Your First 3 Months</h2>
+          <p class="promo-subtext">Get everything in the Glow plan — card payments, deposits, no-show protection and more.</p>
+
+          <div class="promo-price-highlight">
+            <div class="promo-price-col promo-price-discounted">
+              <span class="promo-price-amount">£7.49</span>
+              <span class="promo-price-period">/month</span>
+              <span class="promo-price-label">for first 3 months</span>
+            </div>
+            <div class="promo-price-divider"></div>
+            <div class="promo-price-col promo-price-original">
+              <span class="promo-price-amount">£14.99</span>
+              <span class="promo-price-period">/month</span>
+              <span class="promo-price-label">then after</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-timer" id="promoTimer">
+          <span class="timer-label"><i class="fas fa-clock"></i> Offer expires in:</span>
+          <div class="timer-blocks">
+            <div class="timer-block"><span id="timerDays">00</span><small>days</small></div>
+            <div class="timer-sep">:</div>
+            <div class="timer-block"><span id="timerHours">00</span><small>hrs</small></div>
+            <div class="timer-sep">:</div>
+            <div class="timer-block"><span id="timerMins">00</span><small>min</small></div>
+            <div class="timer-sep">:</div>
+            <div class="timer-block"><span id="timerSecs">00</span><small>sec</small></div>
+          </div>
+        </div>
+
+        <div class="promo-action">
+          <button class="btn btn-primary promo-reveal-btn" id="promoRevealBtn">
+            <i class="fas fa-gift"></i>
+            <span>Reveal My Code</span>
+          </button>
+
+          <div class="promo-code-reveal" id="promoCodeReveal">
+            <p class="promo-code-label">Your exclusive discount code:</p>
+            <div class="promo-code-box">
+              <span class="promo-code-text" id="promoCodeText">GLOW50</span>
+              <button class="promo-copy-btn" id="promoCopyBtn" aria-label="Copy code">
+                <i class="fas fa-copy"></i>
+                <span>Copy</span>
+              </button>
+            </div>
+            <p class="promo-code-hint">Apply this code when registering your Glow plan at checkout.</p>
+            <a href="https://glowout.me/partners/" class="btn btn-primary promo-cta-btn" target="_blank" rel="noopener">
+              Claim Offer <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <button class="promo-dismiss" id="promoDismiss">No thanks, I'll pay full price</button>
+      </div>
+    </div>
+
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
       <i class="fas fa-chevron-up"></i>

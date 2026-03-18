@@ -611,6 +611,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize ambassador form
     new AmbassadorFormHandler();
+
+    // Initialize promo offer modal
+    new PromoModal();
     
     // Initialize smooth scroll polyfill
     smoothScrollPolyfill();
@@ -893,6 +896,159 @@ class AmbassadorFormHandler {
 }
 
 // ===================================
+// Promo Offer Modal
+// ===================================
+
+class PromoModal {
+    constructor() {
+        this.modal = document.getElementById('promoModal');
+        this.overlay = document.getElementById('promoOverlay');
+        this.closeBtn = document.getElementById('promoClose');
+        this.dismissBtn = document.getElementById('promoDismiss');
+        this.revealBtn = document.getElementById('promoRevealBtn');
+        this.codeReveal = document.getElementById('promoCodeReveal');
+        this.copyBtn = document.getElementById('promoCopyBtn');
+        this.code = 'GLOW50';
+        this.expiryDate = this.getOrCreateExpiry();
+        this.timerInterval = null;
+        this.init();
+    }
+
+    getOrCreateExpiry() {
+        const stored = localStorage.getItem('promoExpiry');
+        const oneDayMs = 24 * 60 * 60 * 1000;
+        const oneWeekMs = 7 * oneDayMs;
+
+        if (stored) {
+            const expiry = new Date(parseInt(stored, 10));
+            // If the stored expiry has passed, roll it forward by 1 day
+            if (expiry <= new Date()) {
+                const newExpiry = new Date(Date.now() + oneDayMs);
+                localStorage.setItem('promoExpiry', newExpiry.getTime().toString());
+                return newExpiry;
+            }
+            return expiry;
+        }
+
+        // First visit — set expiry to 1 week from now
+        const expiry = new Date(Date.now() + oneWeekMs);
+        localStorage.setItem('promoExpiry', expiry.getTime().toString());
+        return expiry;
+    }
+
+    init() {
+        if (!this.modal) return;
+
+        this.startTimer();
+
+        // Show after a short delay, once per 24 hours
+        const lastDismissed = localStorage.getItem('promoModalDismissed');
+        const oneDayMs = 24 * 60 * 60 * 1000;
+
+        if (!lastDismissed || (Date.now() - parseInt(lastDismissed, 10)) > oneDayMs) {
+            setTimeout(() => this.openModal(), 1500);
+        }
+
+        this.closeBtn.addEventListener('click', () => this.closeModal());
+        this.overlay.addEventListener('click', () => this.closeModal());
+        this.dismissBtn.addEventListener('click', () => this.closeModal());
+        this.revealBtn.addEventListener('click', () => this.revealCode());
+        this.copyBtn.addEventListener('click', () => this.copyCode());
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+
+    openModal() {
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeModal() {
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+        localStorage.setItem('promoModalDismissed', Date.now().toString());
+    }
+
+    revealCode() {
+        this.revealBtn.style.display = 'none';
+        this.codeReveal.style.display = 'block';
+    }
+
+    copyCode() {
+        const icon = this.copyBtn.querySelector('i');
+        const label = this.copyBtn.querySelector('span');
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(this.code).then(() => {
+                this.showCopied(icon, label);
+            }).catch(() => this.fallbackCopy(icon, label));
+        } else {
+            this.fallbackCopy(icon, label);
+        }
+    }
+
+    fallbackCopy(icon, label) {
+        const el = document.createElement('textarea');
+        el.value = this.code;
+        el.style.position = 'fixed';
+        el.style.opacity = '0';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        this.showCopied(icon, label);
+    }
+
+    showCopied(icon, label) {
+        icon.classList.replace('fa-copy', 'fa-check');
+        if (label) label.textContent = 'Copied!';
+        this.copyBtn.classList.add('copied');
+        setTimeout(() => {
+            icon.classList.replace('fa-check', 'fa-copy');
+            if (label) label.textContent = 'Copy';
+            this.copyBtn.classList.remove('copied');
+        }, 2200);
+    }
+
+    startTimer() {
+        this.updateTimer();
+        this.timerInterval = setInterval(() => this.updateTimer(), 1000);
+    }
+
+    updateTimer() {
+        const diff = this.expiryDate - new Date();
+
+        if (diff <= 0) {
+            // Roll forward by 1 day and keep ticking
+            const oneDayMs = 24 * 60 * 60 * 1000;
+            this.expiryDate = new Date(Date.now() + oneDayMs);
+            localStorage.setItem('promoExpiry', this.expiryDate.getTime().toString());
+            return;
+        }
+
+        const pad = n => String(n).padStart(2, '0');
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const daysEl = document.getElementById('timerDays');
+        const hoursEl = document.getElementById('timerHours');
+        const minsEl = document.getElementById('timerMins');
+        const secsEl = document.getElementById('timerSecs');
+
+        if (daysEl) daysEl.textContent = pad(days);
+        if (hoursEl) hoursEl.textContent = pad(hours);
+        if (minsEl) minsEl.textContent = pad(mins);
+        if (secsEl) secsEl.textContent = pad(secs);
+    }
+}
+
+// ===================================
 // Export for potential module usage
 // ===================================
 
@@ -905,7 +1061,8 @@ if (typeof module !== 'undefined' && module.exports) {
         ImageLazyLoader,
         FormValidator,
         AnimatedCounter,
-        AmbassadorFormHandler
+        AmbassadorFormHandler,
+        PromoModal
     };
 }
 
