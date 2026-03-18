@@ -411,14 +411,38 @@
 
         <div class="nav-menu" id="navMenu">
           <a href="#home" class="nav-link">Home</a>
-          <a href="#customers" class="nav-link">Customers</a>
           <a href="#features" class="nav-link">Features</a>
-          <a href="#testimonials" class="nav-link">Testimonials</a>
-          <a href="#ambassador" class="nav-link">Ambassador</a>
           <a href="#pricing" class="nav-link">Pricing</a>
           <a href="https://glowout.me/partners/" class="nav-link nav-login"
             >Partner Register</a
           >
+
+          <!-- More dropdown (desktop) -->
+          <div class="nav-more" id="navMore">
+            <button class="nav-more-btn" id="navMoreBtn" aria-expanded="false" aria-haspopup="true" aria-label="More links">
+              <span class="nav-more-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+            <div class="nav-more-dropdown" id="navMoreDropdown" role="menu">
+              <a href="#customers" class="nav-more-link" role="menuitem">
+                <i class="fas fa-users"></i> Customers
+              </a>
+              <a href="#testimonials" class="nav-more-link" role="menuitem">
+                <i class="fas fa-star"></i> Testimonials
+              </a>
+              <a href="#ambassador" class="nav-more-link" role="menuitem">
+                <i class="fas fa-heart"></i> Ambassador
+              </a>
+            </div>
+          </div>
+
+          <!-- Mobile-only flat links (shown when hamburger is open) -->
+          <a href="#customers" class="nav-link nav-link-mobile-only">Customers</a>
+          <a href="#testimonials" class="nav-link nav-link-mobile-only">Testimonials</a>
+          <a href="#ambassador" class="nav-link nav-link-mobile-only">Ambassador</a>
 
           <div class="nav-actions">
             <div class="nav-social">

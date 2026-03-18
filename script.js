@@ -52,6 +52,9 @@ class NavigationManager {
         this.navToggle = document.getElementById('navToggle');
         this.navMenu = document.getElementById('navMenu');
         this.navLinks = document.querySelectorAll('.nav-link');
+        this.moreBtn = document.getElementById('navMoreBtn');
+        this.moreDropdown = document.getElementById('navMoreDropdown');
+        this.moreLinks = document.querySelectorAll('.nav-more-link');
         this.init();
     }
 
@@ -66,9 +69,44 @@ class NavigationManager {
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => this.handleNavClick(e));
         });
+
+        // Handle More dropdown
+        if (this.moreBtn) {
+            this.moreBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleMoreDropdown();
+            });
+        }
+
+        // Close dropdown when a More link is clicked
+        this.moreLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                this.closeMoreDropdown();
+                this.handleNavClick(e);
+            });
+        });
         
         // Close menu on outside click
         document.addEventListener('click', (e) => this.handleOutsideClick(e));
+    }
+
+    toggleMoreDropdown() {
+        const isOpen = this.moreDropdown.classList.contains('open');
+        if (isOpen) {
+            this.closeMoreDropdown();
+        } else {
+            this.openMoreDropdown();
+        }
+    }
+
+    openMoreDropdown() {
+        this.moreDropdown.classList.add('open');
+        this.moreBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    closeMoreDropdown() {
+        this.moreDropdown.classList.remove('open');
+        this.moreBtn.setAttribute('aria-expanded', 'false');
     }
 
     handleScroll() {
@@ -110,6 +148,9 @@ class NavigationManager {
     handleOutsideClick(e) {
         if (!this.navMenu.contains(e.target) && !this.navToggle.contains(e.target)) {
             this.closeMenu();
+        }
+        if (this.moreBtn && !this.moreBtn.closest('.nav-more').contains(e.target)) {
+            this.closeMoreDropdown();
         }
     }
 }
