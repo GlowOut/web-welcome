@@ -6,31 +6,38 @@
     Customer booking site: https://glowout.me
   -->
   <head>
-    <!-- Google tag (gtag.js) - Combined Analytics & Ads -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-1K97F91FRT"
-    ></script>
+    <meta charset="utf-8" />
+
+    <!--
+      GDPR / ConsentManager compliance:
+      Google Analytics, Google Ads and Google Tag Manager are NOT loaded
+      here. They are loaded by consent.js below ONLY after the user
+      clicks "Accept All" on the consent banner.
+
+      The script tag below queues Google Consent Mode v2 defaults so any
+      tracker that loads later (after consent) respects the
+      denied-by-default state and so that pre-consent visits never set
+      identifying cookies.
+    -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
+      window.gtag = gtag;
 
-      // Google Analytics
-      gtag("config", "G-1K97F91FRT");
-
-      // Google Ads
-      gtag("config", "AW-17764370287");
-
-      // Event snippet for Sign-up conversion page
-      gtag("event", "conversion", {
-        send_to: "AW-17764370287/yHaICOiLj8gbEO-O25ZC",
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
       });
     </script>
 
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta
@@ -366,33 +373,15 @@
       }
     </script>
 
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-PVHPBMGZ");
-    </script>
-    <!-- End Google Tag Manager -->
+    <!--
+      Google Tag Manager and the (noscript) GTM iframe have been removed
+      from the static markup. consent.js loads them after the user
+      accepts the cookie banner, so visitors who decline (or who haven't
+      yet decided) never hit googletagmanager.com.
+    -->
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-PVHPBMGZ"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -1471,6 +1460,13 @@
                     >Terms & Conditions</a
                   >
                 </li>
+                <li>
+                  <button
+                    type="button"
+                    class="cookie-settings-link"
+                    onclick="if(window.GlowOutConsent)window.GlowOutConsent.openSettings();return false;"
+                  >Cookie settings</button>
+                </li>
               </ul>
             </div>
           </div>
@@ -1560,6 +1556,50 @@
       <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!--
+      Cookie consent banner.
+      Shown until the user clicks Accept or Reject. consent.js loads
+      Google Analytics / Ads / Tag Manager only after Accept and clears
+      any previously-set GA/Ads cookies on Reject.
+    -->
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      role="dialog"
+      aria-label="Cookie consent"
+      hidden
+    >
+      <div class="cookie-banner__inner">
+        <div class="cookie-banner__text">
+          <h2 class="cookie-banner__title">We value your privacy</h2>
+          <p class="cookie-banner__desc">
+            We use cookies and similar technologies (Google Analytics and Google
+            Ads) to understand how this site is used, measure ad performance,
+            and improve our service. You can change your choice anytime via the
+            "Cookie settings" link in the footer.
+            <a href="https://glowout.me/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+          </p>
+        </div>
+        <div class="cookie-banner__actions">
+          <button
+            id="cookie-banner-reject"
+            type="button"
+            class="cookie-banner__btn cookie-banner__btn--secondary"
+          >
+            Reject All
+          </button>
+          <button
+            id="cookie-banner-accept"
+            type="button"
+            class="cookie-banner__btn cookie-banner__btn--primary"
+          >
+            Accept All
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="./script.js"></script>
+    <script src="./consent.js"></script>
   </body>
 </html>

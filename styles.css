@@ -3431,3 +3431,130 @@ section {
     font-size: 10px;
   }
 }
+
+
+/* ===================================
+   Cookie Consent Banner
+   =================================== */
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 18px 20px calc(18px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
+  font-family: inherit;
+  animation: cookieBannerSlideUp 0.3s ease-out;
+}
+
+@keyframes cookieBannerSlideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.cookie-banner[hidden] { display: none; }
+
+.cookie-banner__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cookie-banner__text { flex: 1; min-width: 240px; }
+
+.cookie-banner__title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #fff;
+  letter-spacing: 0.1px;
+}
+
+.cookie-banner__desc {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cookie-banner__desc a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.cookie-banner__desc a:hover { opacity: 0.85; }
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* Both buttons are EQUALLY prominent (EDPB guidance: "Reject" must be
+   as easy as "Accept"). Same size, padding, font weight, border. */
+.cookie-banner__btn {
+  min-width: 130px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s ease, transform 0.1s ease,
+    background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.cookie-banner__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.cookie-banner__btn:active { transform: scale(0.97); }
+
+.cookie-banner__btn--secondary {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.cookie-banner__btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+.cookie-banner__btn--primary {
+  background: var(--color-primary, #ff446d);
+  color: #fff;
+  border-color: var(--color-primary, #ff446d);
+}
+
+.cookie-banner__btn--primary:hover { opacity: 0.92; }
+
+@media (max-width: 768px) {
+  .cookie-banner__inner { gap: 14px; }
+  .cookie-banner__actions { width: 100%; }
+  .cookie-banner__btn { flex: 1; }
+}
+
+/* "Cookie settings" link in the footer */
+.cookie-settings-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cookie-settings-link:hover { opacity: 0.8; }
