@@ -431,16 +431,12 @@
               <a href="#testimonials" class="nav-more-link" role="menuitem">
                 <i class="fas fa-star"></i> Testimonials
               </a>
-              <a href="#ambassador" class="nav-more-link" role="menuitem">
-                <i class="fas fa-heart"></i> Ambassador
-              </a>
             </div>
           </div>
 
           <!-- Mobile-only flat links (shown when hamburger is open) -->
           <a href="#customers" class="nav-link nav-link-mobile-only">Customers</a>
           <a href="#testimonials" class="nav-link nav-link-mobile-only">Testimonials</a>
-          <a href="#ambassador" class="nav-link nav-link-mobile-only">Ambassador</a>
 
           <div class="nav-actions">
             <div class="nav-social">
@@ -569,118 +565,9 @@
       </div>
     </section>
 
-    <!-- Ambassador Section -->
-    <section class="ambassador-banner" id="ambassador">
-      <div class="container">
-        <div class="ambassador-content">
-          <div class="ambassador-image-wrapper">
-            <img
-              src="Images/Person holiding phone with logo.png"
-              alt="Beauty professional using GlowOut Partners app on mobile phone"
-              class="ambassador-image"
-              loading="lazy"
-            />
-          </div>
-          <div class="ambassador-info">
-            <h3 class="ambassador-title">
-              Want to become a GlowOut Ambassador?
-            </h3>
-            <p class="ambassador-description">
-              Join our ambassador program and help us grow the GlowOut
-              community! Share your passion for beauty and earn exclusive
-              rewards.
-            </p>
-            <button class="btn btn-primary ambassador-cta" id="ambassadorCta">
-              Apply Now
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ambassador Modal -->
-    <div class="modal" id="ambassadorModal">
-      <div class="modal-overlay"></div>
-      <div class="modal-content ambassador-modal">
-        <button class="modal-close" id="modalClose" aria-label="Close modal">
-          <i class="fas fa-times"></i>
-        </button>
-
-        <div class="modal-header">
-          <div class="modal-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <h2>Become a GlowOut Ambassador</h2>
-          <p>Fill in your details below and we'll be in touch!</p>
-        </div>
-
-        <form class="ambassador-form" id="ambassadorForm">
-          <div class="form-group">
-            <label for="ambassadorName"
-              >Full Name <span class="required">*</span></label
-            >
-            <input
-              type="text"
-              id="ambassadorName"
-              name="name"
-              required
-              placeholder="Enter your full name"
-              autocomplete="name"
-            />
-            <span class="form-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="ambassadorEmail"
-              >Email Address <span class="required">*</span></label
-            >
-            <input
-              type="email"
-              id="ambassadorEmail"
-              name="email"
-              required
-              placeholder="your.email@example.com"
-              autocomplete="email"
-            />
-            <span class="form-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="ambassadorMessage">Message (Optional)</label>
-            <textarea
-              id="ambassadorMessage"
-              name="message"
-              rows="4"
-              placeholder="Tell us why you'd like to become a GlowOut Ambassador..."
-            ></textarea>
-            <span class="form-error"></span>
-          </div>
-
-          <div class="form-actions">
-            <button
-              type="submit"
-              class="btn btn-primary btn-submit"
-              id="ambassadorSubmit"
-            >
-              <span class="btn-text">Submit Application</span>
-              <span class="btn-loading" style="display: none">
-                <i class="fas fa-circle-notch fa-spin"></i> Sending...
-              </span>
-            </button>
-          </div>
-
-          <div
-            class="form-message"
-            id="formMessage"
-            style="display: none"
-          ></div>
-        </form>
-      </div>
-    </div>
-
     <!-- Designed For Section -->
     <section class="designed-for" id="customers">
+      <div class="designed-for-atmosphere" aria-hidden="true"></div>
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Designed For</h2>
@@ -690,63 +577,106 @@
           </p>
         </div>
 
-        <div class="cards-grid">
-          <div class="feature-card" data-aos="fade-up">
-            <div class="card-icon">
-              <i class="fas fa-user"></i>
+        <div class="audience-gallery">
+          <article class="audience-tile" data-aos="fade-up">
+            <img
+              class="audience-tile-media"
+              src="Images/audience-freelancer.jpg"
+              alt="Freelance beauty professional at work"
+              loading="lazy"
+            />
+            <div class="audience-tile-overlay"></div>
+            <div class="audience-tile-content">
+              <div class="audience-tile-icon" aria-hidden="true">
+                <i class="fas fa-user"></i>
+              </div>
+              <h3>Freelancers</h3>
+              <p>
+                Solo MUAs, lash techs, hairdressers and beauticians — run your
+                books, take payments and grow without the admin mess.
+              </p>
             </div>
-            <h3>Freelancers</h3>
-            <p>
-              Part or full time MUA, Lash tech, Hairdresser, all round
-              Beautician? We got you.
-            </p>
-          </div>
+          </article>
 
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="card-icon">
-              <i class="fas fa-shop"></i>
+          <article class="audience-tile" data-aos="fade-up" data-aos-delay="80">
+            <img
+              class="audience-tile-media"
+              src="Images/audience-salon.jpg"
+              alt="Salon interior with beauty stations"
+              loading="lazy"
+            />
+            <div class="audience-tile-overlay"></div>
+            <div class="audience-tile-content">
+              <div class="audience-tile-icon" aria-hidden="true">
+                <i class="fas fa-shop"></i>
+              </div>
+              <h3>Salon Owners</h3>
+              <p>
+                From your own salon floor to a rented chair — manage staff,
+                clients and bookings in one place.
+              </p>
             </div>
-            <h3>Salon Owners</h3>
-            <p>Own your own salon or hire a chair in a salon? We got you.</p>
-          </div>
+          </article>
 
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="card-icon">
-              <i class="fas fa-user-graduate"></i>
+          <article class="audience-tile" data-aos="fade-up" data-aos-delay="160">
+            <img
+              class="audience-tile-media"
+              src="Images/audience-hobbyist.jpg"
+              alt="Student practicing beauty skills"
+              loading="lazy"
+            />
+            <div class="audience-tile-overlay"></div>
+            <div class="audience-tile-content">
+              <div class="audience-tile-icon" aria-hidden="true">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <h3>Hobbyists / College</h3>
+              <p>
+                Building skills after hours or still in training — start taking
+                clients properly, even before you’re full-time.
+              </p>
             </div>
-            <h3>Hobbyists / College</h3>
-            <p>
-              Do beauty in your spare time for money or still studying at
-              college? We got you.
-            </p>
-          </div>
+          </article>
 
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="card-icon">
-              <i class="fas fa-briefcase"></i>
+          <article class="audience-tile" data-aos="fade-up" data-aos-delay="240">
+            <img
+              class="audience-tile-media"
+              src="Images/audience-chains.jpg"
+              alt="Multi-location salon brand"
+              loading="lazy"
+            />
+            <div class="audience-tile-overlay"></div>
+            <div class="audience-tile-content">
+              <div class="audience-tile-icon" aria-hidden="true">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <h3>Salon Chains</h3>
+              <p>
+                Multi-site brands that need shared control — locations, teams
+                and reporting without juggling separate tools.
+              </p>
             </div>
-            <h3>Salon Chains</h3>
-            <p>Own a chain of salons on a business level? We got you.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
+      <div class="testimonials-atmosphere" aria-hidden="true"></div>
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">What Our Partners Say</h2>
           <p class="section-subtitle">
-            Don't just take our word for it - hear from beauty professionals who
-            are already using GlowOut
+            Real partners. Real bookings. Hear why beauty pros stick with
+            GlowOut.
           </p>
         </div>
 
         <div class="testimonials-grid">
-          <!-- TESTIMONIAL 1 - UPDATE: Name, Role, Location & Quote -->
-          <div class="testimonial-card" data-aos="fade-up">
-            <div class="testimonial-rating">
+          <article class="testimonial-quote" data-aos="fade-up">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -754,18 +684,20 @@
               <i class="fas fa-star"></i>
             </div>
             <p class="testimonial-text">
-              "I recently switched to the Glowout booking system and I honestly couldn't be happier. As one of their first users, the team has been incredibly supportive from day one. They helped me move over from my old system with no stress and answered every question I had. The platform itself is high quality and very affordable. I'd especially recommend it to anyone new to the beauty or hair industry, as it's well-priced and easy to use, but it's just as great if you've been in the industry for years like I have!"
+              I switched to GlowOut and honestly couldn’t be happier. As one of
+              their first users, the team helped me move over with no stress.
+              High quality, well priced, and just as great whether you’re new or
+              years in the industry.
             </p>
             <div class="testimonial-author">
               <div class="author-avatar">
-                <img src="Images/CW.jpeg" alt="CW Artistry Studio" /> 
+                <img src="Images/CW.jpeg" alt="CW Artistry Studio" />
               </div>
               <div class="author-info">
                 <h4>CW Artistry Studio</h4>
                 <p>Salon Beautician, Glasgow</p>
               </div>
             </div>
-            <!-- UPDATE: Add booking URL for CW Artistry Studio -->
             <a
               href="https://cwartistry.glowout.me/"
               class="testimonial-book-btn"
@@ -775,11 +707,11 @@
               <span>Book Chloe</span>
               <i class="fas fa-arrow-right"></i>
             </a>
-          </div>
+          </article>
 
-          <!-- TESTIMONIAL 2 - UPDATE: Name, Role, Location & Quote -->
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonial-rating">
+          <article class="testimonial-quote" data-aos="fade-up" data-aos-delay="100">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -787,20 +719,20 @@
               <i class="fas fa-star"></i>
             </div>
             <p class="testimonial-text">
-              "GlowOut is such easy way to get seen by new clients! I love how easy it is to set up & your on the go! As a mobile beautician, having everything in one app is amazing.
-              From calendar to payments to directions to my clients home it's all there.
-              Highly recommend!"
+              GlowOut is such an easy way to get seen by new clients. As a
+              mobile beautician, having everything in one app is amazing —
+              calendar, payments, even directions to my clients’ homes. Highly
+              recommend!
             </p>
             <div class="testimonial-author">
               <div class="author-avatar">
-                <img src="Images/Adele.jpeg" alt="Adele Hall Makeup" /> 
+                <img src="Images/Adele.jpeg" alt="Adele Hall Makeup" />
               </div>
               <div class="author-info">
                 <h4>Adele Hall Makeup</h4>
                 <p>Freelance MUA, Glasgow</p>
               </div>
             </div>
-            <!-- UPDATE: Add booking URL for Adele Hall Makeup -->
             <a
               href="https://adelehallmua.glowout.me/"
               class="testimonial-book-btn"
@@ -810,11 +742,11 @@
               <span>Book Adele</span>
               <i class="fas fa-arrow-right"></i>
             </a>
-          </div>
+          </article>
 
-          <!-- TESTIMONIAL 3 - UPDATE: Name, Role, Location & Quote -->
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="testimonial-rating">
+          <article class="testimonial-quote" data-aos="fade-up" data-aos-delay="200">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -822,20 +754,22 @@
               <i class="fas fa-star"></i>
             </div>
             <p class="testimonial-text">
-              "After starting this new journey in my career I had no idea what a good booking system looked like. With Glowout of there was nothing that I wanted added to the system that they couldn’t do! The team behind the scenes have the best customer service which will keep me as a partner for the foreseeable"
+              Starting this new journey, I had no idea what a good booking
+              system looked like. With GlowOut, there was nothing I wanted that
+              they couldn’t do — and the customer service will keep me as a
+              partner for the foreseeable.
             </p>
             <div class="testimonial-author">
               <div class="author-avatar">
-                <img src="Images/AK.jpeg" alt="Simply Style by AK" /> 
+                <img src="Images/AK.jpeg" alt="Simply Style by AK" />
               </div>
               <div class="author-info">
                 <h4>Simply Style by AK</h4>
                 <p>Mobile Hairdresser, Glasgow</p>
               </div>
             </div>
-            <!-- UPDATE: Add booking URL for Simply Style by AK -->
             <a
-              href="http://simplystyle.glowout.me/"
+              href="https://simplystyle.glowout.me/"
               class="testimonial-book-btn"
               target="_blank"
               rel="noopener"
@@ -843,338 +777,290 @@
               <span>Book Amy</span>
               <i class="fas fa-arrow-right"></i>
             </a>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
+      <div class="features-atmosphere" aria-hidden="true"></div>
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Our Features</h2>
           <p class="section-subtitle">
-            This list is forever growing bigger. You want something added? Let
-            us know and we'll get it added to our list of amazing features!
+            Everything you need to run bookings, clients and payments — and
+            we’re always adding more. Want something? Tell us.
           </p>
         </div>
 
         <div class="features-grid">
-          <div class="feature-item" data-aos="fade-up">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-credit-card"></i>
             </div>
             <div class="feature-content">
               <h3>Take Card Payments</h3>
-              <p>
-                We're partnered with Stripe. Meaning that you can enable card
-                payments for your services!
-              </p>
+              <p>Powered by Stripe — take card payments securely when clients book.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="50">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="40">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-money-bill-wave"></i>
             </div>
             <div class="feature-content">
-              <h3>Take Deposits Before Booking</h3>
-              <p>
-                Choose a total amount or a percentage of the service cost to
-                ensure your time is respected, even with last minute dropouts
-                and no shows!
-              </p>
+              <h3>Deposits Before Booking</h3>
+              <p>Set a fixed amount or percentage so no-shows don’t cost you the day.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-fire"></i>
             </div>
             <div class="feature-content">
-              <h3>Partner Panel Access</h3>
-              <p>
-                Your very own Partner Panel gives you access to service
-                performance graphs, revenue tracking, your top rated services
-                and upcoming appointments.
-              </p>
+              <h3>Partner Panel</h3>
+              <p>Track revenue, top services, performance and what’s coming up next.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="120">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-calendar"></i>
             </div>
             <div class="feature-content">
               <h3>Booking Calendar</h3>
-              <p>
-                Your fully automated bookings calendar keeps track of every
-                past, present and future appointments. With access to complete
-                booking information including invoices.
-              </p>
+              <p>Past, present and future appointments in one place — including invoices.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="160">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-address-book"></i>
             </div>
             <div class="feature-content">
               <h3>Client Books</h3>
-              <p>
-                Automatically keep track of every client who has booked one of
-                your services. View their completed and upcoming bookings and
-                their contact information if needed.
-              </p>
+              <p>Every client who books is saved with history, upcoming visits and contact details.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="250">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-users"></i>
             </div>
             <div class="feature-content">
-              <h3>Employee Creation</h3>
-              <p>
-                Work in a team? You can create, track and manage your employees
-                all in one place. You'll also have a list of every detailed
-                service carried out by your employee.
-              </p>
+              <h3>Team & Employees</h3>
+              <p>Add staff, manage their diaries and see every service they’ve carried out.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="240">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-wand-magic-sparkles"></i>
             </div>
             <div class="feature-content">
               <h3>Unlimited Services</h3>
-              <p>
-                Add as many services as you like to your Partner profile,
-                including descriptions, images, time taken and pricing. You can
-                also hide services if you want to take a break.
-              </p>
+              <p>Add as many as you need with photos, duration and pricing — hide any when you pause.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="350">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="280">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-images"></i>
             </div>
             <div class="feature-content">
               <h3>Your Own Gallery</h3>
-              <p>
-                Gain access to your own gallery to showcase your amazing work!
-                Upload as many images as you like to attract new clients.
-              </p>
+              <p>Showcase your best work with unlimited photos that help win new clients.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="320">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-file-lines"></i>
             </div>
             <div class="feature-content">
               <h3>Client & Revenue Reports</h3>
-              <p>
-                We automatically generate reports on your revenue and client
-                base, giving you who, what and when for the clients and full
-                income reporting. Downloadable via either pdf or csv.
-              </p>
+              <p>See who booked what, when — and download income reports as PDF or CSV.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="450">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="360">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-star-half-stroke"></i>
             </div>
             <div class="feature-content">
               <h3>Client Reviews</h3>
-              <p>
-                Everyone needs helpful feedback. We encourage reviews so that
-                more and more people will book your services with confidence! We
-                also have review reporting for those less than flattering
-                comments.
-              </p>
+              <p>Collect reviews that build trust, plus reporting when feedback needs a closer look.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-hashtag"></i>
             </div>
             <div class="feature-content">
-              <h3>Link your Socials</h3>
-              <p>
-                Who doesn't love more followers? Link your socials to your
-                profile so that your clients can like, follow and keep up to
-                date with your FB & Insta profiles.
-              </p>
+              <h3>Link Your Socials</h3>
+              <p>Connect Facebook and Instagram so clients can follow you from your profile.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="550">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="440">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-chalkboard-user"></i>
             </div>
             <div class="feature-content">
               <h3>Courses & Classes</h3>
-              <p>
-                Run group courses and classes with session dates, capacity,
-                rosters and drop-in or full-course pricing — all bookable
-                straight from GlowOut.
-              </p>
+              <p>Run group sessions with dates, capacity and pricing — bookable straight in GlowOut.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="600">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="480">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-robot"></i>
             </div>
             <div class="feature-content">
-              <h3>Meet Glowy, Your AI Assistant</h3>
-              <p>
-                Chat (or talk) to Glowy to book, reschedule, manage clients,
-                waitlists, promos and forms — without hunting through menus.
-              </p>
+              <h3>Glowy AI Assistant</h3>
+              <p>Chat or talk to Glowy to book, reschedule, manage clients, waitlists and more.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="650">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="520">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-camera"></i>
             </div>
             <div class="feature-content">
-              <h3>Import Menus & Forms with AI</h3>
-              <p>
-                Snap a photo of your price list or paper consultation form and
-                we'll draft editable services or forms for you to review and
-                save.
-              </p>
+              <h3>AI Menu & Form Import</h3>
+              <p>Photograph a price list or paper form and we’ll draft editable services or forms.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="700">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="560">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-clipboard-list"></i>
             </div>
             <div class="feature-content">
               <h3>Consultation Forms</h3>
-              <p>
-                Build consent, patch-test and intake forms, assign them to
-                services, send links to clients and view responses against each
-                booking.
-              </p>
+              <p>Build consent and intake forms, assign to services, and store replies on each booking.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="750">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-gift"></i>
             </div>
             <div class="feature-content">
               <h3>Gift Cards</h3>
-              <p>
-                Issue branded gift cards by email and let clients redeem them
-                when they book — perfect for birthdays, Christmas and treating
-                a friend.
-              </p>
+              <p>Send branded gift cards by email — clients redeem them when they book.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="800">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="640">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-hourglass-half"></i>
             </div>
             <div class="feature-content">
               <h3>Waitlists</h3>
-              <p>
-                Fully booked? Keep the demand. Add clients to a waitlist, notify
-                them when a slot opens and turn it into a booking in a tap.
-              </p>
+              <p>Fully booked? Keep demand — notify clients when a slot opens and convert in a tap.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="850">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="680">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-location-dot"></i>
             </div>
             <div class="feature-content">
-              <h3>Multi-Location Salons</h3>
-              <p>
-                Run several branches from one Partner app — switch locations
-                instantly, keep teams and calendars organised, and see the big
-                picture across your business.
-              </p>
+              <h3>Multi-Location</h3>
+              <p>Run several branches from one app — switch locations and keep teams organised.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="900">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="720">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-boxes-stacked"></i>
             </div>
             <div class="feature-content">
               <h3>Service Packages</h3>
-              <p>
-                Bundle services into packages at a set price — ideal for courses
-                of treatment, bridal prep and upselling your bestsellers.
-              </p>
+              <p>Bundle treatments at a set price — ideal for courses, bridal prep and bestsellers.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="950">
-            <div class="feature-icon">
+          <article class="feature-item" data-aos="fade-up" data-aos-delay="760">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fas fa-comment-sms"></i>
             </div>
             <div class="feature-content">
-              <h3>SMS Appointment Reminders</h3>
-              <p>
-                Top up SMS credits and send text reminders alongside email and
-                push — so fewer clients forget, and fewer chairs sit empty.
-              </p>
+              <h3>SMS Reminders</h3>
+              <p>Send text reminders alongside email and push — fewer forgotten appointments.</p>
             </div>
-          </div>
+          </article>
 
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="1000">
-            <div class="feature-icon">
-              <img src="Images/logo_white.webp" alt="GlowOut" />
+          <article class="feature-item feature-item--more" data-aos="fade-up" data-aos-delay="800">
+            <div class="feature-icon" aria-hidden="true">
+              <img src="Images/logo_white.webp" alt="" />
             </div>
             <div class="feature-content">
-              <h3>Much, MUCH More!</h3>
-              <p>
-                We're forever adding new features. Anything that will make your
-                life easier, let us know and we'll look at adding it just for
-                you 💕
-              </p>
+              <h3>Much, Much More</h3>
+              <p>We’re always shipping. Tell us what would make your day easier — we’ll look into it.</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="cta-background">
+    <!-- Destinations Section -->
+    <section class="cta-section" id="destinations">
+      <div class="cta-background" aria-hidden="true">
         <div class="gradient-orb orb-4"></div>
         <div class="gradient-orb orb-5"></div>
       </div>
 
       <div class="container">
-        <div class="cta-content">
-          <h2>Looking for our main website?</h2>
-          <p>
-            Click here to go to glowout.me which is our main site, to search for
-            your perfect service, make bookings and review your experience!
-          </p>
-          <a
-            href="https://glowout.me"
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener"
-          >
-            Take me to GlowOut
-            <i class="fas fa-arrow-right"></i>
-          </a>
+        <div class="cta-header">
+          <h2>Where do you want to go?</h2>
+          <p>Clients book on GlowOut. Partners run their business on the Partner site.</p>
+        </div>
+
+        <div class="cta-cards">
+          <article class="cta-card">
+            <div class="cta-card-icon" aria-hidden="true">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>GlowOut for Clients</h3>
+            <p>
+              Search beauty pros near you, book appointments, manage visits and
+              leave reviews on glowout.me.
+            </p>
+            <a
+              href="https://glowout.me"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              Go to GlowOut
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="cta-card">
+            <div class="cta-card-icon" aria-hidden="true">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>GlowOut for Partners</h3>
+            <p>
+              Open your Partner Panel to manage bookings, clients, payments and
+              grow your beauty business.
+            </p>
+            <a
+              href="https://glowout.me/partners/"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener"
+            >
+              Go to Partner site
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </article>
         </div>
       </div>
     </section>
