@@ -1,0 +1,35 @@
+---
+description: Agent-side Sentry + Jira triage — search before bug fixes, link issues, and update both when shipping (no paid Sentry↔Jira sync).
+alwaysApply: true
+---
+
+# Sentry + Jira workflow (agent-side)
+
+We do **not** use the paid Sentry↔Jira integration. The agent keeps both systems in sync via MCP.
+
+**Sentry org:** `glowout` (region `https://de.sentry.io`)  
+**Jira:** `glowout.atlassian.net` · project **KAN** (GlowOut) · prefer issue type **Bug** for errors
+
+## Before bug / error / “something’s broken” work
+
+1. Search **Sentry** (`search_issues`) for matching unresolved issues — prefer `environment:production`, sort by freq when relevant.
+2. Search **Jira** for related open tickets (summary/error text, Sentry short IDs like `GLOWOUT-CLIENT-3Q`).
+3. Tell the user what you found before coding.
+4. **Reuse** existing tickets. Only create a new Jira Bug when none fits.
+5. When creating or linking:
+   - Put the Sentry URL in the Jira description.
+   - Remote-link Jira → Sentry (`jira-work-item-links-jira-work-item-remote-link`).
+   - Add a Sentry issue note with the Jira browse URL.
+
+Skip this search only for pure features/refactors with no error or regression signal.
+
+## When shipping a fix
+
+1. Include both IDs in the commit/PR body, e.g. `Fixes GLOWOUT-CLIENT-3Q` and `KAN-6`.
+2. Resolve the Sentry issue (`update_issue`) and note the PR/commit.
+3. Transition the Jira ticket toward Done; comment with what changed + PR/commit link.
+4. Do **not** resolve either side until the fix is committed (or the user explicitly asks to close without shipping).
+
+## Side work / drive-by fixes
+
+If work might touch an area that already errors in prod, run the Sentry/Jira search first and link the fix to those tickets instead of leaving orphan commits.
