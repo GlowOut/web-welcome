@@ -42,7 +42,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta
       name="description"
-      content="Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals."
+      content="Welcome to GlowOut Partners — salon software for beauty professionals. Every feature included for £14.99 a month."
     />
 
     <!-- Favicon -->
@@ -75,8 +75,12 @@
         var host = window.location.hostname;
         var protocol = window.location.protocol;
 
-        // Redirect to HTTPS if on HTTP
-        if (protocol === "http:") {
+        // Redirect to HTTPS if on HTTP (skip local preview)
+        if (
+          protocol === "http:" &&
+          host !== "localhost" &&
+          host !== "127.0.0.1"
+        ) {
           window.location.href =
             "https://helloglowout.com" +
             window.location.pathname +
@@ -105,7 +109,7 @@
     <meta property="og:title" content="GlowOut Partners - Welcome" />
     <meta
       property="og:description"
-      content="Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals."
+      content="Welcome to GlowOut Partners — salon software for beauty professionals. Every feature included for £14.99 a month."
     />
     <meta
       property="og:image"
@@ -118,7 +122,7 @@
     <meta name="twitter:title" content="GlowOut Partners - Welcome" />
     <meta
       name="twitter:description"
-      content="Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals."
+      content="Welcome to GlowOut Partners — salon software for beauty professionals. Every feature included for £14.99 a month."
     />
     <meta
       name="twitter:image"
@@ -194,30 +198,20 @@
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory": "Salon & Spa Management Software",
         "operatingSystem": "iOS, Android",
-        "offers": [
-          {
-            "@type": "Offer",
-            "name": "Free Plan",
-            "description": "Forever free plan for beauty professionals",
-            "price": "0",
-            "priceCurrency": "GBP",
-            "availability": "https://schema.org/InStock"
-          },
-          {
-            "@type": "Offer",
-            "name": "Glow Plan",
-            "description": "Perfect for freelancers and solo practitioners",
+        "offers": {
+          "@type": "Offer",
+          "name": "Glow",
+          "description": "Everything included for beauty professionals — bookings, payments, clients, team and AI.",
+          "price": "14.99",
+          "priceCurrency": "GBP",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
             "price": "14.99",
             "priceCurrency": "GBP",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "14.99",
-              "priceCurrency": "GBP",
-              "unitText": "MONTH"
-            },
-            "availability": "https://schema.org/InStock"
-          }
-        ],
+            "unitText": "MONTH"
+          },
+          "availability": "https://schema.org/InStock"
+        },
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.8",
@@ -225,7 +219,7 @@
           "bestRating": "5",
           "worstRating": "1"
         },
-        "description": "Welcome to GlowOut Partners - the comprehensive platform for beauty service providers. Discover features, pricing plans, and how to join our growing community of beauty professionals.",
+        "description": "Welcome to GlowOut Partners — salon software for beauty professionals. Every feature included for £14.99 a month.",
         "url": "https://helloglowout.com/",
         "screenshot": "https://helloglowout.com/Images/hero imageHD.webp",
         "featureList": [
@@ -302,7 +296,7 @@
             "name": "How much does GlowOut Partners cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "GlowOut offers two plans: Free (£0 forever) and Glow (£14.99/month for freelancers). The Free plan includes calendar, reports, and gallery features. The Glow plan adds card payments, deposits, consultation forms, and more."
+              "text": "GlowOut Partners is £14.99 a month. Every feature is included — calendar, card payments, deposits, consultation forms, AI, gift cards, waitlists and more. No free tier and nothing locked behind a higher plan. Card payments are processed by Stripe at 1.5% + 20p."
             }
           },
           {
@@ -318,7 +312,7 @@
             "name": "Can I use GlowOut as a freelance beautician?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes! The Glow plan (£14.99/month) is perfect for freelancers, mobile beauticians, and solo practitioners. You get all features including card payments, deposits, no-show protection, and your own booking website."
+              "text": "Yes. GlowOut Partners at £14.99 a month is built for freelancers, mobile beauticians, and solo practitioners as well as salons. You get every feature including card payments, deposits, no-show protection, and your own booking website."
             }
           },
           {
@@ -334,7 +328,7 @@
             "name": "How do I take deposits with GlowOut?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "With the Glow plan, you can require deposits before confirming bookings. Choose a fixed amount or percentage of the service cost. This protects against no-shows and last-minute cancellations."
+              "text": "You can require deposits before confirming bookings. Choose a fixed amount or percentage of the service cost. This protects against no-shows and last-minute cancellations."
             }
           }
         ]
@@ -787,224 +781,179 @@
       <div class="features-atmosphere" aria-hidden="true"></div>
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Our Features</h2>
+          <p class="section-kicker">One plan. Every feature.</p>
+          <h2 class="section-title">Everything you need to run the business</h2>
           <p class="section-subtitle">
-            Everything you need to run bookings, clients and payments — and
-            we’re always adding more. Want something? Tell us.
+            Bookings, payments, clients, team and AI — all included. Nothing
+            locked behind a higher tier. Want something extra? Tell us.
           </p>
         </div>
 
-        <div class="features-grid">
-          <article class="feature-item" data-aos="fade-up">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-credit-card"></i>
+        <div class="features-groups">
+          <article class="feature-group" data-aos="fade-up">
+            <div class="feature-group-header">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-calendar"></i>
+              </div>
+              <div>
+                <h3>Bookings &amp; diary</h3>
+                <p>Your day, in one place.</p>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3>Take Card Payments</h3>
-              <p>Powered by Stripe — take card payments securely when clients book.</p>
-            </div>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Booking calendar</strong> — past, present and future appointments, including invoices.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Unlimited services</strong> — photos, duration and pricing; hide any when you pause.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Courses &amp; classes</strong> — group sessions with dates, capacity and pricing.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Service packages</strong> — bundle treatments for bridal, courses and bestsellers.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Waitlists</strong> — notify clients when a slot opens and convert in a tap.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Flexible hours</strong> — holidays and dynamic working times that match real life.</span>
+              </li>
+            </ul>
           </article>
 
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="40">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-money-bill-wave"></i>
+          <article class="feature-group" data-aos="fade-up" data-aos-delay="60">
+            <div class="feature-group-header">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <div>
+                <h3>Payments &amp; protection</h3>
+                <p>Get paid. Keep the diary.</p>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3>Deposits Before Booking</h3>
-              <p>Set a fixed amount or percentage so no-shows don’t cost you the day.</p>
-            </div>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Card payments</strong> — Stripe checkout when clients book.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Deposits</strong> — fixed amount or percentage so no-shows don’t cost the day.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>No-show protection</strong> — keep deposits when clients don’t turn up.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Klarna</strong> — let clients pay later, you still get paid.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Gift cards</strong> — branded cards by email, redeemed at booking.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Promotions &amp; coupons</strong> — run offers without the spreadsheet.</span>
+              </li>
+            </ul>
           </article>
 
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="80">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-fire"></i>
+          <article class="feature-group" data-aos="fade-up" data-aos-delay="120">
+            <div class="feature-group-header">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-users"></i>
+              </div>
+              <div>
+                <h3>Clients &amp; team</h3>
+                <p>Solo or a full salon.</p>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3>Partner Panel</h3>
-              <p>Track revenue, top services, performance and what’s coming up next.</p>
-            </div>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Client books</strong> — history, upcoming visits and contact details, automatically.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Consultation forms</strong> — build, assign to services, store replies on the booking.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Reviews</strong> — collect trust-building feedback, with reporting when you need it.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Team logins</strong> — add staff, manage diaries and see every service they did.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Multi-location</strong> — several branches, one app, organised teams.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Unlimited clients &amp; team</strong> — no per-seat tax as you grow.</span>
+              </li>
+            </ul>
           </article>
 
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="120">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-calendar"></i>
+          <article class="feature-group" data-aos="fade-up" data-aos-delay="180">
+            <div class="feature-group-header">
+              <div class="feature-icon" aria-hidden="true">
+                <i class="fas fa-wand-magic-sparkles"></i>
+              </div>
+              <div>
+                <h3>Grow &amp; automate</h3>
+                <p>Look bigger than a diary app.</p>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3>Booking Calendar</h3>
-              <p>Past, present and future appointments in one place — including invoices.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="160">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-address-book"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Client Books</h3>
-              <p>Every client who books is saved with history, upcoming visits and contact details.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Team & Employees</h3>
-              <p>Add staff, manage their diaries and see every service they’ve carried out.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="240">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-wand-magic-sparkles"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Unlimited Services</h3>
-              <p>Add as many as you need with photos, duration and pricing — hide any when you pause.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="280">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-images"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Your Own Gallery</h3>
-              <p>Showcase your best work with unlimited photos that help win new clients.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="320">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-file-lines"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Client & Revenue Reports</h3>
-              <p>See who booked what, when — and download income reports as PDF or CSV.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="360">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-star-half-stroke"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Client Reviews</h3>
-              <p>Collect reviews that build trust, plus reporting when feedback needs a closer look.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="400">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-hashtag"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Link Your Socials</h3>
-              <p>Connect Facebook and Instagram so clients can follow you from your profile.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="440">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-chalkboard-user"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Courses & Classes</h3>
-              <p>Run group sessions with dates, capacity and pricing — bookable straight in GlowOut.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="480">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-robot"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Glowy AI Assistant</h3>
-              <p>Chat or talk to Glowy to book, reschedule, manage clients, waitlists and more.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="520">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-camera"></i>
-            </div>
-            <div class="feature-content">
-              <h3>AI Menu & Form Import</h3>
-              <p>Photograph a price list or paper form and we’ll draft editable services or forms.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="560">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-clipboard-list"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Consultation Forms</h3>
-              <p>Build consent and intake forms, assign to services, and store replies on each booking.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="600">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-gift"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Gift Cards</h3>
-              <p>Send branded gift cards by email — clients redeem them when they book.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="640">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-hourglass-half"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Waitlists</h3>
-              <p>Fully booked? Keep demand — notify clients when a slot opens and convert in a tap.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="680">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-location-dot"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Multi-Location</h3>
-              <p>Run several branches from one app — switch locations and keep teams organised.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="720">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-boxes-stacked"></i>
-            </div>
-            <div class="feature-content">
-              <h3>Service Packages</h3>
-              <p>Bundle treatments at a set price — ideal for courses, bridal prep and bestsellers.</p>
-            </div>
-          </article>
-
-          <article class="feature-item" data-aos="fade-up" data-aos-delay="760">
-            <div class="feature-icon" aria-hidden="true">
-              <i class="fas fa-comment-sms"></i>
-            </div>
-            <div class="feature-content">
-              <h3>SMS Reminders</h3>
-              <p>Send text reminders alongside email and push — fewer forgotten appointments.</p>
-            </div>
-          </article>
-
-          <article class="feature-item feature-item--more" data-aos="fade-up" data-aos-delay="800">
-            <div class="feature-icon" aria-hidden="true">
-              <img src="Images/logo_white.webp" alt="" />
-            </div>
-            <div class="feature-content">
-              <h3>Much, Much More</h3>
-              <p>We’re always shipping. Tell us what would make your day easier — we’ll look into it.</p>
-            </div>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Partner panel</strong> — revenue, top services and what’s coming up next.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Reports</strong> — who booked what, when — download as PDF or CSV.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Gallery &amp; socials</strong> — showcase work and link Facebook or Instagram.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Glowy AI</strong> — chat or talk to book, reschedule, manage clients and waitlists.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>AI import</strong> — photograph a price list or paper form, get editable drafts.</span>
+              </li>
+              <li>
+                <i class="fas fa-check" aria-hidden="true"></i>
+                <span><strong>Your booking link</strong> — listed on GlowOut, plus email, push and SMS reminders.</span>
+              </li>
+            </ul>
           </article>
         </div>
+
+        <a href="#pricing" class="features-price-banner">
+          <span class="features-price-banner-copy">
+            All of this for
+            <strong>£14.99 a month</strong>
+            — no free tier, no locked extras.
+          </span>
+          <span class="features-price-banner-cta">
+            See pricing
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </span>
+        </a>
       </div>
     </section>
 
@@ -1069,381 +1018,94 @@
     <section class="pricing" id="pricing">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Our Pricing</h2>
+          <p class="section-kicker">Simple pricing</p>
+          <h2 class="section-title">Just £14.99 for everything</h2>
           <p class="section-subtitle">
-            Prices too good to be true? It isn't. Let's give you change for that
-            note
+            No free plan. No hidden tiers. One price for the full toolkit —
+            salon, freelancer or mobile.
           </p>
         </div>
 
-        <div
-          class="pricing-sticky"
-          id="pricingSticky"
-          aria-hidden="false"
-        ></div>
-        <div class="pricing-comparison">
-          <div class="table-scroll-hint" aria-hidden="true">
-            Swipe to compare plans →
-          </div>
-          <div
-            class="pricing-tabs"
-            id="pricingTabs"
-            role="tablist"
-            aria-label="Compare plans"
-          >
-            <button
-              class="pricing-tab active"
-              role="tab"
-              aria-selected="true"
-              data-target="free"
+        <article class="pricing-hero">
+          <div class="pricing-hero-main">
+            <span class="pricing-badge">Glow</span>
+            <div class="price">
+              <span class="currency">£</span>
+              <span class="amount">14.99</span>
+            </div>
+            <p class="period">per month, everything included</p>
+            <p class="pricing-hero-copy">
+              Card payments, deposits, team logins, Glowy AI, gift cards,
+              waitlists, reports — the lot. New features land here too.
+            </p>
+            <a
+              href="https://glowout.me/partners/"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Free
-            </button>
-            <button
-              class="pricing-tab"
-              role="tab"
-              aria-selected="false"
-              data-target="single"
-            >
-              Glow
-            </button>
-          </div>
-          <!-- Pricing Headers -->
-          <div class="comparison-header">
-            <div class="feature-column">
-              <h3>Features</h3>
-            </div>
-            <div class="plan-column" data-plan="free">
-              <div class="plan-header">
-                <h3>Free</h3>
-                <div class="price">
-                  <span class="currency">£</span>
-                  <span class="amount">0</span>
-                </div>
-                <p class="period">forever</p>
-                <a
-                  href="https://glowout.me/partners/"
-                  class="btn btn-outline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Started
-                </a>
-              </div>
-            </div>
-            <div class="plan-column featured" data-plan="single">
-              <div class="plan-header">
-                <h3>Glow</h3>
-                <div class="price">
-                  <span class="currency">£</span>
-                  <span class="amount">14.99</span>
-                </div>
-                <p class="period">per month</p>
-                <a
-                  href="https://glowout.me/partners/"
-                  class="btn btn-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get Started
-                </a>
-              </div>
-            </div>
+              Get started
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
           </div>
 
-          <!-- Comparison Table -->
-          <div class="comparison-table">
-            <div class="comparison-row">
-              <div class="feature-cell">Access to the Partners App</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Save Pictures in Your Gallery</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Showcase Services in Your Gallery</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Unlock Revenue & Client Reports</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Full Booking Calendar Access</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Unlimited Services</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Unlimited Clients</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">
-                Automatic Email & Push Notification Reminders
-              </div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Share Availability to Socials</div>
-              <div class="plan-cell"><i class="fas fa-check"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">List Your Salon on GlowOut</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Flexible Working Schedule</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Holidays and Dynamic Working Times</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Take Reviews</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">
-                Create Unlimited Consultation Forms
-              </div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Take Deposits</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">No Show Protection</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">
-                Take Card Payments
-                <a
-                  href="#payment-fees"
-                  class="fees-link"
-                  title="View payment processing fees"
-                >
-                  <i class="fas fa-info-circle"></i>
-                </a>
-              </div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Take Payments via Klarna</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Your Own Website Link for Clients</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Promotions and Coupons</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Multiple salon locations</div>
-              <div class="plan-cell">1</div>
-              <div class="plan-cell featured">Multiple</div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Team member logins</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">AI-powered features</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Courses & Classes</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Gift Cards</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Waitlists</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Service Packages</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">SMS Appointment Reminders</div>
-              <div class="plan-cell"><i class="fas fa-times"></i></div>
-              <div class="plan-cell featured"><i class="fas fa-check"></i></div>
-            </div>
-
-            <div class="comparison-row highlight">
-              <div class="feature-cell">Team Size</div>
-              <div class="plan-cell">1</div>
-              <div class="plan-cell featured">Unlimited</div>
-            </div>
-
-            <!-- Payment Processing Fees Section -->
-            <div class="comparison-section-header" id="payment-fees">
-              <div class="section-header-cell">
-                <i class="fas fa-credit-card"></i>
-                <span>Payment Processing Fees</span>
-              </div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Card Payment Processing Fee</div>
-              <div class="plan-cell"><span class="fee-badge">N/A</span></div>
-              <div class="plan-cell featured">
-                <span class="fee-badge">1.5% + 20p</span>
-              </div>
-            </div>
-
-            <div class="comparison-row">
-              <div class="feature-cell">Klarna Processing Fee</div>
-              <div class="plan-cell"><span class="fee-badge">N/A</span></div>
-              <div class="plan-cell featured">
-                <span class="fee-badge">4.99% + 35p</span>
-              </div>
-            </div>
-
-            <div class="comparison-row fee-description-row">
-              <div class="feature-cell">
-                <span class="fee-description">
-                  <i class="fas fa-info-circle"></i>
-                  We partner with Stripe for secure card payments, and they
-                  charge a processing fee on each card payment. For example, on
-                  a £50 service the fee is ~£0.95 (1.5% + 20p), so you receive
-                  ~£49.05. No extra fees from GlowOut.
-                </span>
-              </div>
-              <div class="plan-cell"></div>
-              <div class="plan-cell featured"></div>
-            </div>
-
-            <div class="comparison-row fee-footnote-row">
-              <div class="feature-cell">
-                <span class="fee-footnote"
-                  >Fees may vary by card type and region. Exact charges are set
-                  by Stripe.</span
-                >
-              </div>
-              <div class="plan-cell"></div>
-              <div class="plan-cell featured"></div>
-            </div>
-
-            <!-- Additional Features Section -->
-            <div class="comparison-section-header">
-              <div class="section-header-cell">
-                <i class="fas fa-plus-circle"></i>
-                <span>Additional Features</span>
-              </div>
-            </div>
-
-            <div class="comparison-row addon-row">
-              <div class="feature-cell">
-                SMS Appointment Reminders - 100 Texts
-              </div>
-              <div class="price-cell">£6</div>
-            </div>
-
-            <div class="comparison-row addon-row">
-              <div class="feature-cell">
-                SMS Appointment Reminders - 500 Texts
-              </div>
-              <div class="price-cell">£27</div>
-            </div>
-
-            <div class="comparison-row addon-row">
-              <div class="feature-cell">
-                SMS Appointment Reminders - 1000 Texts
-              </div>
-              <div class="price-cell">£50</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Fees Summary -->
-    <section class="fees-mobile" aria-label="Payment Processing Fees (Mobile)">
-      <div class="container">
-        <div class="fees-mobile-card">
-          <div class="fees-mobile-header">
-            <i class="fas fa-credit-card"></i>
-            <span>Payment Processing Fees</span>
-          </div>
-          <ul class="fees-mobile-list">
-            <li><strong>Card payments</strong>: 1.5% + 20p</li>
-            <li><strong>Klarna (Pay Later)</strong>: 4.99% + 35p</li>
+          <ul class="pricing-hero-perks">
+            <li>
+              <i class="fas fa-check" aria-hidden="true"></i>
+              Unlimited bookings, clients, services and team members
+            </li>
+            <li>
+              <i class="fas fa-check" aria-hidden="true"></i>
+              Stripe card payments, deposits and no-show protection
+            </li>
+            <li>
+              <i class="fas fa-check" aria-hidden="true"></i>
+              Multi-location, consultation forms and your own booking link
+            </li>
+            <li>
+              <i class="fas fa-check" aria-hidden="true"></i>
+              Glowy AI, gift cards, waitlists, courses and packages
+            </li>
+            <li>
+              <i class="fas fa-check" aria-hidden="true"></i>
+              Revenue reports, gallery, reviews and SMS reminders
+            </li>
           </ul>
-          <p class="fees-mobile-desc">
-            We partner with Stripe for secure card payments, and they charge a
-            processing fee on each card payment. For example, on a £50 service
-            the fee is ~£0.95 (1.5% + 20p), so you receive ~£49.05. No extra
-            fees from GlowOut.
-          </p>
-          <p class="fees-mobile-footnote">
-            Fees may vary by card type and region. Exact charges are set by
-            Stripe.
-          </p>
+        </article>
+
+        <div class="pricing-notes">
+          <article class="pricing-note" id="payment-fees">
+            <h3>
+              <i class="fas fa-credit-card" aria-hidden="true"></i>
+              Payment processing
+            </h3>
+            <ul>
+              <li><strong>Card payments</strong> 1.5% + 20p</li>
+              <li><strong>Klarna</strong> 4.99% + 35p</li>
+            </ul>
+            <p>
+              We partner with Stripe. On a £50 service the card fee is about
+              £0.95, so you receive about £49.05. GlowOut doesn’t add a cut.
+              Fees can vary by card type and region — Stripe sets the exact
+              charge.
+            </p>
+          </article>
+
+          <article class="pricing-note">
+            <h3>
+              <i class="fas fa-comment-sms" aria-hidden="true"></i>
+              Optional SMS packs
+            </h3>
+            <ul>
+              <li><strong>100 texts</strong> £6</li>
+              <li><strong>500 texts</strong> £27</li>
+              <li><strong>1,000 texts</strong> £50</li>
+            </ul>
+            <p>
+              Email and push reminders are included. SMS is optional if you
+              want texts as well.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -1539,7 +1201,7 @@
         <div class="promo-header">
           <div class="promo-percent gradient-text">50%</div>
           <h2 class="promo-headline" id="promoHeadline">Off Your First 3 Months</h2>
-          <p class="promo-subtext">Get everything in the Glow plan — card payments, deposits, no-show protection and more.</p>
+          <p class="promo-subtext">Get everything — card payments, deposits, no-show protection and more — for £14.99 a month after the offer.</p>
 
           <div class="promo-price-highlight">
             <div class="promo-price-col promo-price-discounted">
@@ -1584,7 +1246,7 @@
                 <span>Copy</span>
               </button>
             </div>
-            <p class="promo-code-hint">Apply this code when registering your Glow plan at checkout.</p>
+            <p class="promo-code-hint">Apply this code at checkout when you register.</p>
             <a href="https://glowout.me/partners/" class="btn btn-primary promo-cta-btn" target="_blank" rel="noopener">
               Claim Offer <i class="fas fa-arrow-right"></i>
             </a>
