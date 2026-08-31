@@ -543,7 +543,7 @@ class PromoModal {
         this.revealBtn = document.getElementById('promoRevealBtn');
         this.codeReveal = document.getElementById('promoCodeReveal');
         this.copyBtn = document.getElementById('promoCopyBtn');
-        this.code = 'GLOW50';
+        this.code = 'NEW50';
         this.expiryDate = this.getOrCreateExpiry();
         this.timerInterval = null;
         this.init();
